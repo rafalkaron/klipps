@@ -25,10 +25,12 @@ __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 import os
 import datetime
 import re       #regular expression
-
 #Global Variables
 _timestamp = datetime.datetime.now()
 _timestamp_formatted = str(_timestamp.strftime("%d_%m_%y-%H-%M-%S"))
+_script_filepath = os.path.abspath(__file__)                                            #gets this script filepath
+_script_filename = os.path.basename(__file__)                                           #gets this script filename
+_script_directory = _script_filepath.replace(_script_filename, "").replace("\\", "/")   #prints the script directory w/o its filename
 
 #Functions
 def intro():
@@ -60,7 +62,7 @@ def kindle_to_md():
 
     with _clippings_file as file:
         filedata = file.read()
-    filedata = filedata.replace("==========", "")
+    filedata = filedata.replace("==========", "") #.replace can be stacked
     with _out_md as file:
         file.write(filedata)
 
@@ -72,7 +74,7 @@ def kindle_to_pdf():
     global _kindle_to_pdf_called
     _kindle_to_pdf_called = True
     kindle_to_md()
-    os.system("cd DITA-OT//bin && dita -i " + "../../out/My Clippings.md" + " -f pdf2")
+    #os.system("cd "+ str(_script_directory) + "DITA-OT/bin && dita -i " + "\"../../out/My Clippings.md\"" + " -f pdf2")     #improve path handling
 
 _kindle_to_pdf_called = False
 
@@ -97,7 +99,7 @@ def src_folder():
         os.mkdir(_src_folder)
 
 def summary():
-    if _kindle_to_md_called == True:                                    #need to rework this to include last called function
+    if _kindle_to_md_called == True and _kindle_to_pdf_called == False:             #improve this by adding HTML5 option
         print("Your Kindle clippings were converted to Markdown.")
     elif _kindle_to_pdf_called == True:
         print("Your Kindle clippings were converted to PDF.")
