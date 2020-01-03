@@ -3,7 +3,7 @@ __version__ = "0.2"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 """
-    Kindle Clippings Beautifier (Codename: Unchanging Zit)
+    Kindle Clippings Beautifier (Codename: Unchanging Tick)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Beautify your Kindle clippings by exporting them to a desired format.
@@ -41,18 +41,27 @@ def main_menu():
 
 def kindle_to_md():
     global _kindle_to_md_called
-    _kindle_to_md_called = True                                                                                                                 #Checks if the function was run for the summary
-    _clippings_location = input("Enter a full path to the \"Kindle Clippings.txt\" file: ")                                                     #Asks for the input txt file
-    _clippings_file = open(_clippings_location, "rt", encoding="utf-8")                                                                         #Opens the input txt file
+    _kindle_to_md_called = True
     
-    out_folder()                                                                                                                                #Calls a function that creates an out folder
-    _out_md = open(str(_out_folder) + "/" + "My Clippings" +str(_timestamp.strftime("%d_%m_%y-%H-%M-%S")) + ".md", "w+t", encoding="utf-8")     #Creates the output md file
-    _out_md.write("#My Kindle Clippings\n_Generated on " + str(_timestamp.strftime("%x")) + " at " + str(_timestamp.strftime("%X")) + "_\n\n")  #Adds title to the file
-    _out_md.write(_clippings_file.read())                                                                                                       #Copies the input txt file contents into the output md file
-    
+    out_folder()
+    _out_md = open(str(_out_folder) + "/" + "My Clippings" +str(_timestamp.strftime("%d_%m_%y-%H-%M-%S")) + ".md", "w+t", encoding="utf-8")
+    _clippings_file = input("Enter a full path to the \"Kindle Clippings.txt\" file: ")
 
-    _clippings_file.close                                                                                                                       #Closes the file
-    _out_md.close                                                                                                                               #Closes the file
+    _out_md.write("# My Kindle Clippings" + "\n" + " _Generated on " + str(_timestamp.strftime("%x")) + " at " + str(_timestamp.strftime("%X")) + "_\n\n")
+
+    with open(_clippings_file, "rt", encoding="utf-8") as file:
+        filedata = file.read()
+    filedata = filedata.replace("==========", "")
+    with _out_md as file:
+        file.write(filedata)
+
+    file.close                                                                                                                       #Closes the file
+    _out_md.close
+"""
+    
+    _out_md.write
+"""
+
 _kindle_to_md_called = False                                                                                                                    #Needed for summary
 
 def out_folder():
@@ -73,6 +82,7 @@ def summary():
 
 #Invocations
 intro()
-main_menu()
+#main_menu()
+kindle_to_md()
 summary()
 exit()
