@@ -1,9 +1,9 @@
 # coding: utf-8
-__version__ = "0.1"
+__version__ = "0.2"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 """
-    Kindle Clippings Beautifier (Codename: Undefined Zit)
+    Kindle Clippings Beautifier (Codename: Unchanging Zit)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Beautify your Kindle clippings by exporting them to a desired format.
@@ -44,6 +44,7 @@ def kindle_to_md():
     _kindle_to_md_called = True                                                                                                                 #Checks if the function was run for the summary
     _clippings_location = input("Enter a full path to the \"Kindle Clippings.txt\" file: ")                                                     #Asks for the input txt file
     _clippings_file = open(_clippings_location, "rt", encoding="utf-8")                                                                         #Opens the input txt file
+    
     out_folder()                                                                                                                                #Calls a function that creates an out folder
     _out_md = open(str(_out_folder) + "/" + "My Clippings" +str(_timestamp.strftime("%d_%m_%y-%H-%M-%S")) + ".md", "w+t", encoding="utf-8")     #Creates the output md file
     _out_md.write("#My Kindle Clippings\n_Generated on " + str(_timestamp.strftime("%x")) + " at " + str(_timestamp.strftime("%X")) + "_\n\n")  #Adds title to the file
