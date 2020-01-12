@@ -21,9 +21,7 @@ __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
     - Customization (Name, e.g. Fred's Clippings)
 """
 #Modules
-import os
-import datetime
-import re           #regular expression
+import os, datetime, re
 
 #Global Variables
 _timestamp = datetime.datetime.now()
@@ -52,21 +50,27 @@ def kindle_to_md():
     global _kindle_to_md_called
     _kindle_to_md_called = True
     out_folder()
-    out_file()
-
+    global _clippings_filepath
     _clippings_filepath = input("Enter a full path to the \"Kindle Clippings.txt\" file: ")
-    _clippings_file = open(_clippings_filepath, "rt", encoding ="utf-8")
-
+    out_file()
     output_title_header()
+    
+    with open(_clippings_filepath, "rt", encoding ="utf-8") as _in_file:
+        _clippings_file_lines = _in_file.readlines()
 
-    with _clippings_file as file:
-        filedata = file.read()
-    filedata = filedata.replace("==========", "") #.replace can be stacked
-    with _out_md as file: ##remove open
-        file.write(filedata)
+    for line in _clippings_file_lines:
+        if line.startswith("=========="):
+            line = line + "## "
+        _out_md.write(line)
 
-    file.close
-    _out_md.close
+    with open(_clippings_filepath, "rt", encoding ="utf-8") as file:
+        _clippings_file = file.read()
+        _clippings_file = re.sub(r"==========", r"", _clippings_file)                                         #Removes underlines //h2in a new line?
+        _clippings_file = re.sub(r"- Your Highlight at location.* \| ", "", _clippings_file)                #Removes redundant highlight location
+    _out_md.write(_clippings_file)
+
+
+
 _kindle_to_md_called = False
 
 def kindle_to_pdf():
@@ -88,10 +92,11 @@ def output_title_header():
 def out_file():
     i = 0
     if _kindle_to_md_called == True:
-        while os.path.exists(str(_out_folder) + "/" + "My Clippings %s" %i + ".md"):
+        #_out_md_filepath = "str(_out_folder) + \"/\" + \"My Clippings (%s)\" %i + \".md\"" add variable to feed two other ones
+        while os.path.exists(str(_out_folder) + "/" + "My Clippings (%s)" %i + ".md"):
             i += 1
         global _out_md
-        _out_md = open(str(_out_folder) + "/" + "My Clippings %s" %i + ".md", "w+t", encoding="utf-8")
+        _out_md = open(str(_out_folder) + "/" + "My Clippings (%s)" %i + ".md", "w+t", encoding="utf-8")
 
 def out_folder():
     global _out_folder

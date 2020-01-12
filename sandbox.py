@@ -1,3 +1,4 @@
-i = 1
+import re
+filepath = "C:\LocalFiles\GitHub\KindleClippingsBeautifier\src\My Clippings.txt"
 
-print("test%s" %i)
+print(re.search("digital", C:\LocalFiles\GitHub\KindleClippingsBeautifier\src\My Clippings.txt)
