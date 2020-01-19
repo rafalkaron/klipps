@@ -1,5 +1,5 @@
 # coding: utf-8
-__version__ = "0.3"
+__version__ = "0.3.1"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 """
@@ -21,7 +21,7 @@ __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
     - Customization (Name, e.g. Fred's Clippings)
 """
 #Modules
-import os, datetime, re
+import os, datetime, re, shutil
 
 #Global Variables
 _timestamp = datetime.datetime.now()
@@ -76,7 +76,6 @@ def kindle_to_md():
     with open (_out_md_filepath, "w+t", encoding="utf-8") as _out_file:
         _out_file.write(_header)
         _out_file.write(_sr)
-
 _kindle_to_md_called = False
 
 def kindle_to_pdf():
@@ -91,7 +90,8 @@ def kindle_to_html5():
     _kindle_to_html5_called = True
 _kindle_to_html5_called = False
 
-def tmp():
+def tmp(): #consider using the tempfile module
+    global _tmp_folder
     _tmp_folder = (str(_script_directory) + "tmp")
     if not os.path.exists(_tmp_folder):
         os.mkdir(_tmp_folder)    
@@ -99,6 +99,11 @@ def tmp():
     _tmp_md = open(str(_tmp_folder) + "/tmp.md", "w+t", encoding="utf-8")
     global _tmp_md_filepath
     _tmp_md_filepath = str((_tmp_folder) + "/tmp.md")
+
+def cleanup():
+    _tmp_md.close()
+    if os.path.exists(_tmp_folder):
+        shutil.rmtree(_tmp_folder)
 
 def out():
     _out_folder = (str(_script_directory) + "out")
@@ -131,6 +136,6 @@ def summary():
 intro()
 #main_menu()
 kindle_to_md()
-#kindle_to_pdf() ##use prince instead of dita-ot?
+cleanup()
 summary()
 exit()
