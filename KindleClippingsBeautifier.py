@@ -68,7 +68,7 @@ def kindle_to_md():
                 line = line + "## "
             _tmp_md.write(line)
 
-    with open(_clippings_filepath, "rt", encoding ="utf-8") as _in_file:
+    with open(_tmp_md_filepath, "rt", encoding ="utf-8") as _in_file:
         _sr = _in_file.read()                                                            #STR makes this file to load onto the memory
         _sr = re.sub("==========", "", _sr)                                         #Removes underlines //h2in a new line? #remove clippings file @begginign? Inswert newline below. Alternative - check for - Your gihglight and place ## two lines below
         _sr = re.sub(r"- Your Highlight at location.* \| ", "", _sr)                #Removes redundant highlight location
