@@ -1,5 +1,5 @@
 # My Kindle Clippings
- _Generated on 01/12/20 at 11:00:03_
+ _Generated on 01/19/20 at 12:55:48_
 
 ﻿Digital Fortress (Dan Brown)
 Added on Saturday, 14 February 2015 22:52:22

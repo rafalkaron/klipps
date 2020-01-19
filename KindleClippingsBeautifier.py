@@ -46,30 +46,36 @@ def main_menu():
         print("Try answering the following question again.")
         main_menu()
 
-def kindle_to_md():
-    global _kindle_to_md_called
-    _kindle_to_md_called = True
-    out_folder()
+def feed():
     global _clippings_filepath
     _clippings_filepath = input("Enter a full path to the \"Kindle Clippings.txt\" file: ")
-    out_file()
-    output_title_header()
-    
+
+def kindle_to_md():
+    #Checks if the function was called
+    global _kindle_to_md_called
+    _kindle_to_md_called = True
+    #Folders and Files
+    feed()
+    tmp()
+    out()
+    #Document Manipulation
+    _header = str("# My Kindle Clippings" + "\n" + " _Generated on " + str(_timestamp.strftime("%x")) + " at " + str(_timestamp.strftime("%X")) + "_\n\n")    
+
     with open(_clippings_filepath, "rt", encoding ="utf-8") as _in_file:
-        _clippings_file_lines = _in_file.readlines()
+        _clippings_filepath_lines = _in_file.readlines()
+        for line in _clippings_filepath_lines:
+            if line.startswith("=========="):
+                line = line + "## "
+            _tmp_md.write(line)
 
-    for line in _clippings_file_lines:
-        if line.startswith("=========="):
-            line = line + "## "
-        _out_md.write(line)
+    with open(_clippings_filepath, "rt", encoding ="utf-8") as _in_file:
+        _sr = _in_file.read()                                                            #STR makes this file to load onto the memory
+        _sr = re.sub("==========", "", _sr)                                         #Removes underlines //h2in a new line? #remove clippings file @begginign? Inswert newline below. Alternative - check for - Your gihglight and place ## two lines below
+        _sr = re.sub(r"- Your Highlight at location.* \| ", "", _sr)                #Removes redundant highlight location
 
-    with open(_clippings_filepath, "rt", encoding ="utf-8") as file:
-        _clippings_file = file.read()
-        _clippings_file = re.sub(r"==========", r"", _clippings_file)                                         #Removes underlines //h2in a new line?
-        _clippings_file = re.sub(r"- Your Highlight at location.* \| ", "", _clippings_file)                #Removes redundant highlight location
-    _out_md.write(_clippings_file)
-
-
+    with open (_out_md_filepath, "w+t", encoding="utf-8") as _out_file:
+        _out_file.write(_header)
+        _out_file.write(_sr)
 
 _kindle_to_md_called = False
 
@@ -77,8 +83,7 @@ def kindle_to_pdf():
     global _kindle_to_pdf_called
     _kindle_to_pdf_called = True
     kindle_to_md()
-    os.system("cd "+ str(_script_directory) + "DITA-OT/bin && dita -i " + "\"../../out/My Clippings.md\"" + " -f pdf2")     #improve path handling
-
+    os.system("cd "+ str(_script_directory) + "DITA-OT/bin && dita -i " + "\"../../out/My Clippings.md\"" + " -f pdf2")     #improve path handling #think about prince
 _kindle_to_pdf_called = False
 
 def kindle_to_html5():
@@ -86,23 +91,27 @@ def kindle_to_html5():
     _kindle_to_html5_called = True
 _kindle_to_html5_called = False
 
-def output_title_header():
-    _out_md.write("# My Kindle Clippings" + "\n" + " _Generated on " + str(_timestamp.strftime("%x")) + " at " + str(_timestamp.strftime("%X")) + "_\n\n")
+def tmp():
+    _tmp_folder = (str(_script_directory) + "tmp")
+    if not os.path.exists(_tmp_folder):
+        os.mkdir(_tmp_folder)    
+    global _tmp_md
+    _tmp_md = open(str(_tmp_folder) + "/tmp.md", "w+t", encoding="utf-8")
+    global _tmp_md_filepath
+    _tmp_md_filepath = str((_tmp_folder) + "/tmp.md")
 
-def out_file():
+def out():
+    _out_folder = (str(_script_directory) + "out")
+    if not os.path.exists(_out_folder):
+        os.mkdir(_out_folder)
     i = 0
     if _kindle_to_md_called == True:
-        #_out_md_filepath = "str(_out_folder) + \"/\" + \"My Clippings (%s)\" %i + \".md\"" add variable to feed two other ones
         while os.path.exists(str(_out_folder) + "/" + "My Clippings (%s)" %i + ".md"):
             i += 1
         global _out_md
         _out_md = open(str(_out_folder) + "/" + "My Clippings (%s)" %i + ".md", "w+t", encoding="utf-8")
-
-def out_folder():
-    global _out_folder
-    _out_folder = (str(_script_directory) + "out")
-    if not os.path.exists(_out_folder):
-        os.mkdir(_out_folder)
+        global _out_md_filepath
+        _out_md_filepath = str((_out_folder) + "/" + "My Clippings (%s)" %i + ".md")
 
 def src_folder():
     global _src_folder
@@ -122,6 +131,6 @@ def summary():
 intro()
 #main_menu()
 kindle_to_md()
-#kindle_to_pdf()
+#kindle_to_pdf() ##use prince instead of dita-ot?
 summary()
 exit()
