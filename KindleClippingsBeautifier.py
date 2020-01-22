@@ -60,18 +60,26 @@ def kindle_to_md():
     out()
     #Document Manipulation
     _header = str("# My Kindle Clippings" + "\n" + " _Generated on " + str(_timestamp.strftime("%x")) + " at " + str(_timestamp.strftime("%X")) + "_\n\n")    
-
+    
     with open(_clippings_filepath, "rt", encoding ="utf-8") as _in_file:
         _clippings_filepath_lines = _in_file.readlines()
         for line in _clippings_filepath_lines:
             if line.startswith("=========="):
                 line = line + "## "
             _tmp_md.write(line)
-
+    """
+    with open(_clippings_filepath, "rt", encoding = "utf-8") as _in_file:
+        _clippings_filepath_lines = _in_file.readlines()
+        for line in _clippings_filepath_lines:
+            if not line.isspace():
+                _tmp_md.write(line)
+    """
     with open(_tmp_md_filepath, "rt", encoding ="utf-8") as _in_file:
-        _sr = _in_file.read()                                                            #STR makes this file to load onto the memory
+        _sr = _in_file.read()
         _sr = re.sub("==========", "", _sr)                                         #Removes underlines //h2in a new line? #remove clippings file @begginign? Inswert newline below. Alternative - check for - Your gihglight and place ## two lines below
         _sr = re.sub(r"- Your Highlight at location.* \| ", "", _sr)                #Removes redundant highlight location
+        _sr = re.sub('\n\n','\n', _sr)                                              #Removes empty lines
+        #_sr = re.sub(r"Added on.*\d", r"Added on.*\d")
 
     with open (_out_md_filepath, "w+t", encoding="utf-8") as _out_file:
         _out_file.write(_header)
@@ -104,19 +112,22 @@ def cleanup():
     _tmp_md.close()
     if os.path.exists(_tmp_folder):
         shutil.rmtree(_tmp_folder)
+    #if _out_md_filepath == str((_out_folder) + "/My Clippings (0)"):
+    #    os.rename(r"str((_out_folder) + "/My Clippings (0)")", r"str((_out_folder) + "/My Clippings""))
 
 def out():
+    global _out_folder
     _out_folder = (str(_script_directory) + "out")
     if not os.path.exists(_out_folder):
         os.mkdir(_out_folder)
     i = 0
     if _kindle_to_md_called == True:
-        while os.path.exists(str(_out_folder) + "/" + "My Clippings (%s)" %i + ".md"):
+        while os.path.exists(str(_out_folder) + "/My Clippings (%s).md" %i):
             i += 1
         global _out_md
-        _out_md = open(str(_out_folder) + "/" + "My Clippings (%s)" %i + ".md", "w+t", encoding="utf-8")
+        _out_md = open(str(_out_folder) + "/My Clippings (%s).md" %i, "w+t", encoding="utf-8")
         global _out_md_filepath
-        _out_md_filepath = str((_out_folder) + "/" + "My Clippings (%s)" %i + ".md")
+        _out_md_filepath = str((_out_folder) + "/My Clippings (%s).md" %i)
 
 def src_folder():
     global _src_folder
