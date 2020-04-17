@@ -123,19 +123,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-.vscode/settings.json
-.vscode/settings.json
-.vscode/settings.json
-.vscode/settings.json
-DITAnator/*.dita
-DITAnator/*.html
-DITAnator/*.md
-DITAnator/*.MD
-DITAnator/*.MARKDOWN
-DITAnator/*.markdown
-DITAnator/*.txt
-DITAnator/.DS_Store
-.vscode
-DITAnator/RemoveConvertedFiles.py
-sample_files
+
+__pycache__
 .DS_Store
+.vscode
