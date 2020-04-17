@@ -1,29 +1,14 @@
 # coding: utf-8
+
 __version__ = "0.3.1"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 """
-    Kindle Clippings Beautifier (Codename: Sequential Tick)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Beautify your Kindle clippings by exporting them to a desired format.
-    
-    Upcoming features:
-    - Automatically detect the "My Clippoings.txt" file @ connected Kindle
-    - Send converted files to an email
-    - Convert to Markdown
-    - Convert to PDF by using DITA-OT
-    - Convert to HTML5 by using DITA-OT
-    - CLI
-    - GUI
-    - EXE
-    - Default settings
-    - Customization (Name, e.g. Fred's Clippings)
+Export your Kindle Clippings to a nice PDF.
 """
-#Modules
+
 import os, datetime, re, shutil
 
-#Global Variables
 _timestamp = datetime.datetime.now()
 _timestamp_formatted = str(_timestamp.strftime("%d_%m_%y-%H-%M-%S"))
 _script_filepath = os.path.abspath(__file__)                                            #gets this script filepath
@@ -32,6 +17,7 @@ _script_directory = _script_filepath.replace(_script_filename, "").replace("\\",
 
 #Functions
 def intro():
+    """Displays hello message."""
     print("Beautify your Kindle clippings by exporting them to a Markdown file.")
 
 def main_menu():
@@ -67,19 +53,12 @@ def kindle_to_md():
             if line.startswith("=========="):
                 line = line + "## "
             _tmp_md.write(line)
-    """
-    with open(_clippings_filepath, "rt", encoding = "utf-8") as _in_file:
-        _clippings_filepath_lines = _in_file.readlines()
-        for line in _clippings_filepath_lines:
-            if not line.isspace():
-                _tmp_md.write(line)
-    """
+
     with open(_tmp_md_filepath, "rt", encoding ="utf-8") as _in_file:
         _sr = _in_file.read()
         _sr = re.sub("==========", "", _sr)                                         #Removes underlines //h2in a new line? #remove clippings file @begginign? Inswert newline below. Alternative - check for - Your gihglight and place ## two lines below
         _sr = re.sub(r"- Your Highlight at location.* \| ", "", _sr)                #Removes redundant highlight location
         _sr = re.sub('\n\n','\n', _sr)                                              #Removes empty lines
-        #_sr = re.sub(r"Added on.*\d", r"Added on.*\d")
 
     with open (_out_md_filepath, "w+t", encoding="utf-8") as _out_file:
         _out_file.write(_header)
@@ -143,10 +122,14 @@ def summary():
     elif _kindle_to_html5_called == True:
         print("Your Kindle clippings were converted to a website format (HTML5).")
 
-#Invocations
-intro()
-#main_menu()
-kindle_to_md()
-cleanup()
-summary()
-exit()
+
+def main():
+    intro()
+    #main_menu()
+    kindle_to_md()
+    cleanup()
+    summary()
+    exit()
+
+if __name__ == "__main__":
+    main()
