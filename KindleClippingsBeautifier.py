@@ -14,7 +14,9 @@ file_lines = read_file(filepath)
 
 def convert_to_markdown(file_lines):
     """Marks up a list of Kindle Clipping lines with Markdown Syntax"""
-    print(file_lines)
+    print(file_lines.replace('==========','').replace('\n\n','\n'))
+    
+    
     """
     for line in file_lines:
         line_edited = line.replace('==========','')
