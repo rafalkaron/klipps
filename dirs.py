@@ -1,6 +1,9 @@
+# coding: utf-8
 """
 Manage your local directories.
 """
+
+__author__ = "Rafał Karoń <rafalkaron@gmail.com>"
 
 import os
 import sys
@@ -15,7 +18,3 @@ def exe_dir():
 def enter_filepath():
     """Prompts you to provide a full path to a file"""
     return input("Enter a full path to the file: ")
-
-def enter_filepath_arg():
-    """Enables you to provide a full path to a file as a command line argument"""
-    
