@@ -16,8 +16,6 @@ def enter_filepath():
     """Prompts you to provide a full path to a file"""
     return input("Enter a full path to the file: ")
 
-def main():
-    exe_dir()
-
-if __name__ == "__main__":
-    main()
+def enter_filepath_arg():
+    """Enables you to provide a full path to a file as a command line argument"""
+    

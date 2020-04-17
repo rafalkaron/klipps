@@ -18,7 +18,7 @@ def read(file):
     return file_lines
 
 def convert_to_markdown(file_lines):
-    """Mark up a list of Kindle Clipping lines with Markdown Syntax"""
+    """Marks up a list of Kindle Clipping lines with Markdown Syntax"""
     print(file_lines)
 
 def main():
