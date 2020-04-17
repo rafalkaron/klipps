@@ -1,2 +1,2 @@
 # KindleClippingsBeautifier
-Beautify your kindle clippings.
+Beautify your Kindle clippings.

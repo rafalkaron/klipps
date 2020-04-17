@@ -1,5 +1,5 @@
 """
-Manage directories in your OS.
+Manage your local directories.
 """
 
 import os

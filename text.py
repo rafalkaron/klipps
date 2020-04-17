@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-
+Manipulate text files.
 """
 
 def read_file_lines(file):
