@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Manipulate text files.
+Read text files.
 """
 
 __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'

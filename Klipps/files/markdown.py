@@ -7,14 +7,14 @@ import re
 
 __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
-def clipps_to_md(clippings_file):
+def clipps_to_md(file):
     """Applies Markdown syntax to a raw \"Kindle Clippings.txt file\""""    
-    print(clippings_file)
+    print(file)
 
-def md_to_html(md_file):
+def md_to_html(file):
     """Exports Markdown to HTML5"""
-    with open(re.sub(r"(.md|.markdown)", r".html", md_file, flags=re.IGNORECASE), "w") as html_file:
-        markdown_file = open(md_file)
-        md_file_str = markdown_file.read()
-        markdown_file.close()
+    with open(re.sub(r"(.md|.markdown)", r".html", file, flags=re.IGNORECASE), "w") as html_file:
+        md_file = open(file)
+        md_file_str = md_file.read()
+        md_file.close()
         html_file.write(mistune.markdown(md_file_str))
