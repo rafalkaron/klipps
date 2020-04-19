@@ -16,7 +16,7 @@ def clipps_to_md(file):
     
 def str_md_to_html(md_str, dir):
     """Exports a Markdown string to a HTML5 file"""
-    out = f"{dir}/My Clippings.html"
+    out = f"{dir}/My Clippings.html"                    # The out name should match the input file. Probably need to create a class.
     with open(out, "w") as html_file:
         html_file.write(mistune.markdown(md_str))
         return out
