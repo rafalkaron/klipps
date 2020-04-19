@@ -9,7 +9,17 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
 def clipps_to_md(file):
     """Applies Markdown syntax to a raw \"Kindle Clippings.txt file\""""    
-    print(file)
+    markdown = file
+    print(markdown)
+    return(markdown)
+
+def save_to_md(str):
+    """Saves a string to a Markdown file"""
+    
+def str_md_to_html(md_str, dir):
+    """Exports a markdown string to a HTML5 file"""
+    with open(f"{dir}/converted_markdown_string.html", "w") as html_file:
+        html_file.write(mistune.markdown(md_str))
 
 def md_to_html(file):
     """Exports Markdown to HTML5"""
