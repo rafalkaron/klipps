@@ -1,1 +1,1 @@
-from Klipps.FileManipulation import text
+from ..FileManipulation import text
