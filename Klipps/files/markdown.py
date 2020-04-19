@@ -27,7 +27,6 @@ def save_to_md(str):
 def md_to_html(file):
     """Exports a Markdown file to a HTML5 file"""
     with open(re.sub(r"(.md|.markdown)", r".html", file, flags=re.IGNORECASE), "w") as html_file:
-        md_file = open(file)
-        md_file_str = md_file.read()
-        md_file.close()
-        html_file.write(mistune.markdown(md_file_str))
+        with open(file, "rt") as md_file:
+            md_file_str = md_file.read()
+            html_file.write(mistune.markdown(md_file_str))
