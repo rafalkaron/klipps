@@ -1,3 +1,0 @@
-from KindleClippingsBeautifier.FileManipulation.text import read_file, read_file_lines
-from KindleClippingsBeautifier.dirs import exe_dir, enter_filepath
-from KindleClippingsBeautifier.browser import open_tab

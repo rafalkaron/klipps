@@ -3,12 +3,12 @@
 Export your Kindle Clippings to a nice PDF.
 """
 
-__version__ = "0.1"
-__author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
-
 from KindleClippingsBeautifier import read_file
 import sys
 import re
+
+__version__ = "0.1"
+__author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 clippings = read_file(sys.argv[1])
 
