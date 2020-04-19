@@ -15,7 +15,9 @@ filepath = read_file(sys.argv[1])
 def main():
     str_md = clipps_to_md(filepath)
     publish = str_md_to_html(str_md, "/Users/rafalkaron/GitHub/Klipps/src/")
-    open_tab(publish)
+    with open(publish, "rt") as p:
+        p.read()
+    print(publish)
 
 if __name__ == "__main__":
     main()
