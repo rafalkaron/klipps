@@ -1,2 +1,2 @@
-# Clippr
+# Klipps
 Beautify your Kindle clippings.
