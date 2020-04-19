@@ -1,2 +1,2 @@
-# KindleClippingsBeautifier
+# Clippr
 Beautify your Kindle clippings.

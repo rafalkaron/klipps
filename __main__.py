@@ -3,7 +3,7 @@
 Export your Kindle Clippings to a nice PDF.
 """
 
-from KindleClippingsBeautifier import read_file
+from Klipps import read_file
 import sys
 import re
 
@@ -13,7 +13,7 @@ __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 clippings = read_file(sys.argv[1])
 
 def convert_to_markdown(file):
-    """Marks up a list of Kindle Clipping lines with Markdown Syntax"""    
+    """Applies Markdown syntax to a raw \"Kindle Clippings.txt file\""""    
     print(clippings)
     
 def main():
