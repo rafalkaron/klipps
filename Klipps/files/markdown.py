@@ -13,18 +13,19 @@ def clipps_to_md(file):
     
     markdown = file
     return markdown
+    
+def str_md_to_html(md_str, dir):
+    """Exports a Markdown string to a HTML5 file"""
+    out = f"{dir}/My Clippings.html"
+    with open(out, "w") as html_file:
+        html_file.write(mistune.markdown(md_str))
+        return out
 
 def save_to_md(str):
     """Saves a string to a Markdown file"""
-    
-def str_md_to_html(md_str, dir):
-    """Exports a markdown string to a HTML5 file"""
-    with open(f"{dir}/converted_markdown_string.html", "w") as html_file:
-        html_file.write(mistune.markdown(md_str))
-        return f"{dir}/converted_markdown_string.html"
 
 def md_to_html(file):
-    """Exports Markdown to HTML5"""
+    """Exports a Markdown file to a HTML5 file"""
     with open(re.sub(r"(.md|.markdown)", r".html", file, flags=re.IGNORECASE), "w") as html_file:
         md_file = open(file)
         md_file_str = md_file.read()
