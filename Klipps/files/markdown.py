@@ -7,12 +7,13 @@ import re
 
 __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
-def clipps_to_md(file):
-    """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""    
-    # Mark up with markdown syntax here
-    md_str = re.sub("==========", ",", file)
-    md_str = re.sub(r"- Your Highlight at location.* \| ", "", file)
-
+def clipps_to_md(md_str):
+    """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
+    heading = "# My Kindle Clippings"
+    md_str = re.sub("==========", "", md_str)
+    md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
+    footer = "--- \n\n Generated  with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
+    md_str = "\n".join((heading, md_str, footer))
     return md_str
     
 def md_str_to_html(md_str, dir):
