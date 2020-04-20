@@ -12,15 +12,24 @@ def clipps_to_md(md_str):
     heading = "# My Kindle Clippings"
     md_str = re.sub("==========", "", md_str)
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
-    footer = "--- \n\n Generated  with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
+    footer = "--- \n\n **Generated  with [Klipps](https://github.com/rafalkaron/Klipps/releases)**."
     md_str = "\n".join((heading, md_str, footer))
     return md_str
     
-def md_str_to_html(md_str, dir):
+def md_str_to_html(md_str, dir):                        # Add a function that embeds CSS in html to style the output
     """Exports a Markdown string to a HTML5 file"""
     out = f"{dir}/My Clippings.html"                    # The out name should match the input file. Probably need to create a class.
     with open(out, "w") as html_file:
         html_file.write(mistune.markdown(md_str))
+        return out
+
+def md_str_to_html_css(md_str, dir):                        # Add a function that embeds CSS in html to style the output
+    """Exports a Markdown string to a HTML5 file"""
+    out = f"{dir}/My Clippings.html"                    # The out name should match the input file. Probably need to create a class.
+    with open(out, "w") as html_file:
+        html_str = mistune.markdown(md_str)
+        html_str = re.sub("<h1>", "<h1 style=\"color:red\">", html_str)
+        html_file.write(html_str)
         return out
 
 def md_str_to_md(md_str, dir):

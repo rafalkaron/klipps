@@ -676,4 +676,4 @@ Sukienka, którą ma na sobie, to prostokąt z tkaniny w kolorze kawy. Jest oste
 
 --- 
 
- Generated  with [Klipps](https://github.com/rafalkaron/Klipps/releases).
+ **Generated  with [Klipps](https://github.com/rafalkaron/Klipps/releases)**.
