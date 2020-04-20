@@ -1,4 +1,5 @@
 # My Kindle Clippings
+
 ---
 
 ﻿Digital Fortress (Dan Brown)
