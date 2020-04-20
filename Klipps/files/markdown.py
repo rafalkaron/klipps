@@ -42,7 +42,7 @@ def md_str_to_md(md_str, dir):
         md_file.write(md_str)
         return out
 
-def md_to_html(file):
+def md_to_html(file):                                                                               # The most universal here
     """Exports a Markdown file to a HTML5 file"""
     with open(re.sub(r"(.md|.markdown)", r".html", file, flags=re.IGNORECASE), "w") as html_file:
         with open(file, "rt") as md_file:
