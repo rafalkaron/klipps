@@ -10,9 +10,9 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 def clipps_to_md(md_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
     heading = "# My Kindle Clippings\n---\n"
-    md_str = re.sub("==========", "", md_str)
+    md_str = re.sub("==========", "\n---\n", md_str)
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
-    footer = "--- \n\n **Generated  with [Klipps](https://github.com/rafalkaron/Klipps/releases)**."
+    footer = "**Generated  with [Klipps](https://github.com/rafalkaron/Klipps/releases)**."
     md_str = "\n".join((heading, md_str, footer))
     return md_str
     
