@@ -10,12 +10,18 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
 timestamp = datetime.datetime.now()
 
+def added_on(md_str):       # make it generic
+    instances = re.findall(r"Added on .*,*. \d.* \d\d:\d\d:\d\d", md_str)
+    for instance in instances:
+        instance = f"*{instance}*"
+        return instance
+
 def clipps_to_md(md_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
     heading = "# Kindle Clippings\n\n---\n"
     md_str = re.sub("==========", "\n---\n", md_str)
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
-    md_str = re.sub(r"Added on .*,*. \d.* \d\d:\d\d:\d\d", "test", md_str)
+    md_str = re.sub(r"Added on .*,*. \d.* \d\d:\d\d:\d\d", f"\n{added_on(md_str)}", md_str)
     footer = f"Generated on {timestamp.strftime('%d %B, %Y')} at {timestamp.strftime('%-I:%-M %p')} with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
     md_str = "\n".join((heading, md_str, footer))
     return md_str
