@@ -1,4 +1,4 @@
-# My Kindle Clippings
+# Kindle Clippings
 
 ---
 
@@ -947,4 +947,4 @@ Sukienka, którą ma na sobie, to prostokąt z tkaniny w kolorze kawy. Jest oste
 
 ---
 
-**Generated  with [Klipps](https://github.com/rafalkaron/Klipps/releases)**.
+Generated on 21 April, 2020 at 9:14 PM with [Klipps](https://github.com/rafalkaron/Klipps/releases).
