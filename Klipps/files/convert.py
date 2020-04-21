@@ -15,6 +15,7 @@ def clipps_to_md(md_str):
     heading = "# Kindle Clippings\n\n---\n"
     md_str = re.sub("==========", "\n---\n", md_str)
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
+    md_str = re.sub(r"Added on .*,*. \d.* \d\d:\d\d:\d\d", "test", md_str)
     footer = f"Generated on {timestamp.strftime('%d %B, %Y')} at {timestamp.strftime('%-I:%-M %p')} with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
     md_str = "\n".join((heading, md_str, footer))
     return md_str
