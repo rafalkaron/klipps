@@ -14,7 +14,3 @@ def exe_dir():
         return os.path.dirname(sys.executable)
     elif __file__:
         return os.path.dirname(__file__)
-
-def enter_filepath():
-    """Prompts you to provide a full path to a file"""
-    return input("Enter a full path to the file: ")

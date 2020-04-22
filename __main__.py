@@ -8,14 +8,13 @@ import re
 import os
 from Klipps import (read_file,
                     clipps_to_md,
-                    md_str_to_html,
                     md_str_to_html_str,
                     style_html_str,
                     save_str_as_file,
                     open_file_tab,
                     md_str_to_md)
 
-__version__ = "0.1"
+__version__ = "0.2"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 clipps_path = read_file(sys.argv[1])
