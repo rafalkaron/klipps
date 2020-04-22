@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Export your Kindle Clippings to a nice HTML or PDF.
+Export a \"My Clippings.txt\" Kindle file to HTML5.
 """
 
 import sys
@@ -26,7 +26,7 @@ def main():
     html_str = md_str_to_html_str(md_str)
     html_str = style_html_str(html_str)
     publish_html5 = save_str_as_file(html_str, f"{clipps_directory}/My Clippings.html")
-    
     open_file_tab(publish_html5)
+
 if __name__ == "__main__":
     main()
