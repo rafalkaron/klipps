@@ -9,6 +9,9 @@ import os
 from Klipps import (read_file,
                     clipps_to_md,
                     md_str_to_html,
+                    md_str_to_html_str,
+                    style_html_str,
+                    save_str_as_file,
                     open_file_tab,
                     md_str_to_md)
 
@@ -17,12 +20,14 @@ __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 clipps_path = read_file(sys.argv[1])
 clipps_directory = os.path.dirname(os.path.abspath(sys.argv[1]))
-md_str = clipps_to_md(clipps_path)
-publish_html5 = md_str_to_html(md_str, clipps_directory)
 
 def main():
+    md_str = clipps_to_md(clipps_path)
     md_str_to_md(md_str, clipps_directory)
-    open_file_tab(publish_html5)
+    html_str = md_str_to_html_str(md_str)
+    html_str = style_html_str(html_str)
+    publish_html5 = save_str_as_file(html_str, f"{clipps_directory}/My Clippings.html")
     
+    open_file_tab(publish_html5)
 if __name__ == "__main__":
     main()
