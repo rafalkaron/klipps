@@ -10,6 +10,8 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
 timestamp = datetime.datetime.now()
 
+
+
 def clipps_to_md(md_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
     heading = "# Kindle Clippings\n\n---\n"
