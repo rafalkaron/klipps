@@ -16,8 +16,8 @@ def clipps_to_md(md_str):
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
 
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", md_str, re.MULTILINE):
-        new_match = f"*{added_on}*"
-        md_str = re.sub(added_on, new_match, md_str)
+        added_on_new = f"*{added_on}*"
+        md_str = re.sub(added_on, added_on_new, md_str)
     
     footer = f"Generated on {timestamp.strftime('%B %d, %Y')} at {timestamp.strftime('%-I:%-M %p')} with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
     md_str = "\n".join((heading, md_str, footer))
