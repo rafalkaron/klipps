@@ -31,7 +31,7 @@ def md_str_to_md(md_str, dir):
         return out
 
 def md_str_to_html_str(md_str):
-    """Exports a Markdown string to a HTML5 file"""
+    """Exports a Markdown string to HTML string."""
     html_str = mistune.markdown(md_str)
     return html_str
 
