@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Perform common actions with a web browser.
+Open files.
 """
 
 __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
