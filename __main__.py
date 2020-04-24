@@ -21,6 +21,7 @@ clipps_path = read_file(sys.argv[1])
 clipps_directory = os.path.dirname(os.path.abspath(sys.argv[1]))
 
 def main():
+    # Add help info if you open an app without an argument
     md_str = clipps_to_md(clipps_path)
     md_str_to_md(md_str, clipps_directory)
     html_str = md_str_to_html_str(md_str)

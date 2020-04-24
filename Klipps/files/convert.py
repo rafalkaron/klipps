@@ -11,23 +11,15 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 def clipps_to_md(md_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
     timestamp = datetime.datetime.now()
-    heading = "# Kindle Clippings\n\n---\n"
+    heading = "# Kindle Clippings"
     md_str = re.sub("==========", "\n---\n", md_str)
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
 
-    for book_title in re.findall(r"^.*. \(.*\)$", md_str, re.MULTILINE):    # This does not work. Dunny why.
-        new_book_title = f"## {book_title}  "
-        md_str = re.sub(book_title, new_book_title, md_str)
+    for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", md_str, re.MULTILINE):
+        new_match = f"*{added_on}*"
+        md_str = re.sub(added_on, new_match, md_str)
     
-    for match in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", md_str, re.MULTILINE):
-        new_match = f"*{match}*"
-        md_str = re.sub(match, new_match, md_str)
-    
-    for quote in re.findall(r"^.*\n\n---$", md_str, re.MULTILINE): # Groups raise an error r"(^(?!\#).*\n\n)(---$)"
-        new_quote = f"> {quote}"
-        md_str = re.sub(quote, new_quote, md_str)
-
-    footer = f"Generated on {timestamp.strftime('%d %B, %Y')} at {timestamp.strftime('%-I:%-M %p')} with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
+    footer = f"Generated on {timestamp.strftime('%B %d, %Y')} at {timestamp.strftime('%-I:%-M %p')} with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
     md_str = "\n".join((heading, md_str, footer))
     return md_str
 
@@ -49,16 +41,16 @@ def style_html_str(html_str):
     html_declaration = "<!DOCTYPE html>"
     html_tag_open = "<html>"
     html_tag_close = "</html>"
-    # Update favicons with sth more civilised
-    head = "<head>\n<title>Kindle Clippings</title>\n<link href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAC4HpUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHja7ZdBkuQoDEX3nKKPgCSE4DhgIGJuMMfvDyadma7ujuiKWcwiTdjYKvwl/sNUlev//jPcDxyUhV1QSzHH6HGEHDIX3CR/HmdPPqzrfvCPm7e4u37ACAl6OR9j3+ML4vp8wcKO1/e4s2PrpC1El/A6ZGae920XuYWEzzjtZ5f3CyW+TGeffGzZLX5/DgYzmkIPHnEXEn9ez0xyngVnwJWF+REJousav/rn/KuHNwOvu5t//lGZPO04hR7Tijefdpz0FpcrDb9VRHxl5teKTK4UX/wbo6Ux+jm7EqKDXXFP6jGVdYeBFXbKei2iGU7Fva2W0ZIv/gC1hqlW5yseMjG8HhSoUaFBffUHHSgxcGdDz3ywrFgS48wH7CcYj0aDzUmWJglUDpAThPmqhVbePPMhWULmRhjJBDGaNF+buwe+296ExpjLnMinyyvUxXPJooxJbl4xCkBobE91+Uvu7Pz9mGAFBHXZnDDB4uspUZWea0sWZ/HqMDT483sha1sAFiG3ohgSEPCRRCmSN2Yjgo8JfAoqZwlcQYDUKTdUyUEkAk7imRvvGK2xrHyGsb2sDySKAU2WAlghaIj43hKWUHEqGlQ1qmnSrCVKDFFjjBbnPlVMLJhaNLNk2UqSFJKmmCyllFPJnAXbmLocs+WUcy4FSUso0CoYXxCoXKWGqjVWq6nmWg4snyMcesTDjnTkozRu0rAFuBabtdRyK506llIPXXvs1lPPvQystSEjDB1x2Egjj3JR21Tfqd3J/ZkabWq8QM1x9qSGsNlDguZ2opMZiHEgELdJAAuaJzOfKASe5CYzn1mciDKq1Amn0SQGgqET66CL3ZPcb7k5uPu33PhX5NxE91+QcxPdC7mv3H5BrZW13coCNL9CeIodUvD5YUBPhVOZv5e+1bvvvvgR+gh9hD5CH6GP0Efo/yk08MdDxr9TPwGC3JHgUNi9JgAAAYVpQ0NQSUNDIFBST0ZJTEUAAHicfZE9SMNAHMVf00pFKoIWEXHIUJ0siIo4ahWKUCHUCq06mFzaWmjSkKS4OAquBQc/FqsOLs66OrgKguAHiJOjk6KLlPi/pNAixoPjfry797h7Bwj1MtOs0Big6baZTibEbG5FDL8ihH70Io6wzCxjVpJS8B1f9wjw9S7Os/zP/Tm61bzFgIBIPMMM0yZeJ57atA3O+8RRtiGrxOfEoyZdkPiR64rHb5yLLgs8M2pm0nPEUWKx2MZKG7MNUyOeJI6pmk75QtZjlfMWZ61cZc178hdG8vryEtdpDiGJBSxCgggFVZRQhk19laCTYiFN+wkf/6Drl8ilkKsERo55VKBBdv3gf/C7W6swMe4lRRJAx4vjfAwD4V2gUXOc72PHaZwAwWfgSm/5K3Vg+pP0WkuLHQE928DFdUtT9oDLHWDgyZBN2ZWCNIVCAXg/o2/KAX23QNeq11tzH6cPQIa6St0AB4fASJGy13ze3dne279nmv39AFpFcp0odYUNAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH5AQWEi0uIq19iQAAAJJJREFUOMvN0yEOAjEQBdC3hKxGojkEhkNgcCRYFIKTIFDoFXAQ5B6CoJCYFajFDCQ0aQjB9Cff/P7+6UymlIYFOvQZduF5o0oCGkywzxTY4ILlSxgmhgGuOGUC5uH5uPAXyguoimthFvwpoMYKLc7BNrT624uOsXGPWKppsAmtD092aDvcccAtORtjjRG25fy+JzIyHM2D1RGSAAAAAElFTkSuQmCC'rel='icon' type='image/png'/></head>"
+    head = "<head>\n<title>Kindle Clippings</title>\n<link href='data:image/png;base64,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'rel='icon' type='image/png'/></head>"
     body_open = "<body>"
     body_close = "</body>"
     html_str = "\n".join((html_declaration, html_tag_open, head, body_open, html_str, body_close, html_tag_close))
 
     html_str = re.sub("<body>", "<body style=\"width:60%; background-color: #F7F4F3; margin:auto; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;\">", html_str)
-    html_str = re.sub("<h1>", "<h1 style=\"color:#5B2333\">", html_str)
+    html_str = re.sub("<h1>", "<h1 style=\"margin-top:10px;margin-bottom:5px;font-weight:normal; font-size:400%; color:#5B2333; border-bottom: 5px solid #564D4A;\">", html_str)
     html_str = re.sub("<hr>", "<hr style=\"background-color:#564D4A\">", html_str)
     html_str = re.sub("<h2>", "<h2 style=\"color:BA1B1D\">", html_str)
+    html_str = re.sub("<a href=", "<a target='blank' style='text-decoration: none; color:#5B2333; font-weight:bold'href=", html_str)
     return html_str
 
 def save_str_as_file(str, filepath):
