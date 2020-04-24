@@ -8,11 +8,11 @@ import datetime
 
 __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
-def clipps_to_md(md_str):
+def clipps_str_to_md_str(clipps_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
     timestamp = datetime.datetime.now()
     heading = "# Kindle Clippings"
-    md_str = re.sub("==========", "\n---\n", md_str)
+    md_str = re.sub("==========", "\n---\n", clipps_str)
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
 
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", md_str, re.MULTILINE):
