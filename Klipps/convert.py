@@ -20,15 +20,14 @@ def clipps_str_to_md_str(clipps_str):
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", md_str, re.MULTILINE):
         added_on_new = f"*{added_on}*"
         md_str = re.sub(added_on, added_on_new, md_str)
-    
-    
+        
     tit_regex = re.compile(r"^.* +\(.*\)$", re.MULTILINE)   #if the whole line matches r"^.* +\(.*\)$", it replaces all lines with the last match. If not the whole line matches, multiplies the tit new string +\(.*\)$"
     tits = re.findall(tit_regex, md_str)
     for tit in tits:
-        tit_new = f"## {tit}"
+        tit_new = f"{tit}  "
         print(tit)
         md_str = re.sub(tit_regex, tit_new, md_str)
-
+    
     footer = f"Generated on {timestamp.strftime('%B %d, %Y')} at {timestamp.strftime('%-I:%-M %p')} with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
     md_str = "\n".join((heading, md_str, footer))
     return md_str
@@ -59,7 +58,7 @@ def style_html_str(html_str):
     html_str = re.sub("<body>", "<body style=\"width:60%; background-color: #F7F4F3; margin:auto; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;\">", html_str)
     html_str = re.sub("<h1>", "<h1 style=\"margin-top:10px;margin-bottom:15px;font-weight:normal; font-size:400%; color:#5B2333; border-bottom: 5px solid #564D4A;\">", html_str)
     html_str = re.sub("<hr>", "<hr style=\"background-color:#564D4A\">", html_str)
-    html_str = re.sub("<h2>", "<h2 style=\"margin-top:10px; margin-bottom:2px; color:navy; font-size:180%; font-weight:normal\">", html_str)
+    html_str = re.sub("<h2>", "<h2 style=\"margin-top:10px; margin-bottom:2px; font-size:180%; font-weight:normal\">", html_str)
     html_str = re.sub("<a href=", "<a target='blank' style='text-decoration: none; color:#5B2333; font-weight:bold'href=", html_str)
     return html_str
 
