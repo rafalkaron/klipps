@@ -73,9 +73,9 @@ def style_html_str(html_str):
     html_str = re.sub("<code>", "<div class=\"timestamp\" style=\"margin-top:0px; margin-bottom:0px; color:#564D4A; font-size:80%\">", html_str)
     html_str = re.sub("</code>", "</div>", html_str)
     html_str = re.sub("<h2>", "<h2 style=\"margin-top:10px; margin-bottom:0px; font-size:180%; font-weight:normal\">", html_str)
-    html_str = re.sub("<blockquote>", "<div class=\"cite\" style=\"border-bottom: 2px solid #564D4A; margin-bottom:0px; margin-top:0px;\">", html_str)
+    html_str = re.sub("<blockquote>", "<div class=\"cite\" style=\"text-align:justify;border-bottom: 2px solid #564D4A; font-size:90%; margin-bottom:0px; margin-top:0px;\">", html_str)
     html_str = re.sub("</blockquote>", "</div>", html_str)
-    html_str = re.sub("<a href=", "<a target='blank' style='text-decoration: none; color:#5B2333; font-weight:bolder'href=", html_str)
+    html_str = re.sub("<a href=", "<a target='blank' style='text-decoration: none; color:#5B2333; font-weight:bold'href=", html_str)
     return html_str
 
 def save_str_as_file(str, filepath):
