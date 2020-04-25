@@ -11,8 +11,10 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
 def clipps_str_to_md_str(clipps_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
-   
-    
+    """
+    entries_list = re.findall(r"==========([^;]*)==========", clipps_str, re.MULTILINE) #try with groups again
+    print(entries_list[2])
+    """
     md_str = re.sub("==========", "", clipps_str)
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
 
