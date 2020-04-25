@@ -24,7 +24,11 @@ def main():
     parser.add_argument("-md", '--markdown', action="store_true", help='In addition to HTML, converts your "My Clippings.txt" file to Markdown.')
     parser.add_argument("-nopr", "--no_preview", action="store_true", help="Prevents the converted files from opening.")
     parser.add_argument("-ns", "--no_style", action = "store_true",help="Does not style the HTML file by embedding CSS syntax.")
-    args = parser.parse_args()
+    try:
+        args = parser.parse_args()
+    except:
+        parser.print_help()
+        sys.exit(0)
     
     clipps_directory = os.path.dirname(os.path.abspath(args.clipps_path))
     md_str = clipps_str_to_md_str(read_file(args.clipps_path))
