@@ -6,7 +6,7 @@ import mistune
 import re
 import datetime
 
-__author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
+__author__ = 'Rafał Karoń <rafalkaron@gmail.com>'    
 
 def clipps_str_to_md_str(clipps_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
