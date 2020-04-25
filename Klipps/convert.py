@@ -11,8 +11,7 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
 def clipps_str_to_md_str(clipps_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
-    timestamp = datetime.datetime.now()
-    heading = "# Kindle Clippings"
+   
     
     md_str = re.sub("==========", "", clipps_str)
     md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
@@ -41,8 +40,8 @@ def clipps_str_to_md_str(clipps_str):
         cite_new = f"> {cite}"
         md_str = re.sub(cite, cite_new, md_str)
     """
-
-    footer = f"Generated on {timestamp.strftime('%B %d, %Y')} at {timestamp.strftime('%-I:%-M %p')} with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
+    heading = "# Kindle Clippings"
+    footer = f"Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%-I:%-M %p')} with [Klipps](https://github.com/rafalkaron/Klipps/releases)."
     md_str = "\n".join((heading, md_str, footer))
     return md_str
 
