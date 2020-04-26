@@ -29,7 +29,7 @@ def clipps_str_to_html_str(clipps_str):
     html_str = re.sub(r"<h2>\n<div class=\"footer\">", "<div class=\"footer\">", html_str)
     """
     # Still buggy
-    for blockquote in re.findall(r">\n\n.*\n<", html_str, re.MULTILINE):
+    for blockquote in re.findall(r">\n.*\n<", html_str, re.MULTILINE):
         new_blockquote = f"><blockquote{blockquote}/blockquote><"
         html_str = re.sub(blockquote, new_blockquote, html_str)
     """
