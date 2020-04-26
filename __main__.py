@@ -15,7 +15,7 @@ from Klipps import (read_file,
                     open_file,
                     md_str_to_md)
 
-__version__ = "0.2"
+__version__ = "0.3"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
