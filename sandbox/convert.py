@@ -21,3 +21,11 @@ def md_to_html(file):                                                           
         with open(file, "rt") as md_file:
             md_file_str = md_file.read()
             html_file.write(mistune.markdown(md_file_str))
+
+def md_str_to_md(md_str, dir):
+    """Saves a Markdown string to a md file"""
+    out = f"{dir}/My Clippings.md"
+    with open(out, "w") as md_file:
+        md_file.write(md_str)
+        return out
+
