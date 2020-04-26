@@ -13,7 +13,7 @@ from Klipps import (read_file,
                     save_str_as_file,
                     open_file)
 
-__version__ = "0.3"
+__version__ = "0.4"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
