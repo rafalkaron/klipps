@@ -128,4 +128,4 @@ __pycache__/*
 .DS_Store
 .vscode
 src/*
-src/
+src

@@ -12,11 +12,14 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 def clipps_str_to_md_str(clipps_str):
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
     """
-    entries_list = re.findall(r"==========([^;]*)==========", clipps_str, re.MULTILINE) #try with groups again
-    print(entries_list[2])
+    clipps_lines = clipps_str.split()
+    for line in clipps_lines:
+        if line.startswith("=========="):
+            line = line + "\n## "
+        md_str = print(line)
     """
     md_str = re.sub("==========", "", clipps_str)
-    md_str = re.sub(r"- Your Highlight at location.* \| ", "", md_str)
+    md_str = re.sub(r"- Your Highlight .* \| ", "", md_str)
 
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", md_str, re.MULTILINE):
         added_on_short = re.sub(r"^Added on .*, ", "", added_on, re.MULTILINE)
@@ -24,10 +27,11 @@ def clipps_str_to_md_str(clipps_str):
         added_on_new = f"`{added_on_shorter}`"
         md_str = re.sub(added_on, added_on_new, md_str)
     
+    """
     for quote in re.findall(r"^\n.*\n\n", md_str, re.MULTILINE): # Groups raise an error r"(^(?!\#).*\n\n)(---$)"
         new_quote = f"> {quote}"
         md_str = re.sub(quote, new_quote, md_str)
-
+    """
     """
     tit_regex = re.compile(r"^.* +\(.*\)$", re.MULTILINE)   #if the whole line matches r"^.* +\(.*\)$", it replaces all lines with the last match. If not the whole line matches, multiplies the tit new string +\(.*\)$"
     tits = re.findall(tit_regex, md_str)
@@ -70,7 +74,7 @@ def style_html_str(html_str):
     html_str = "\n".join((html_declaration, html_tag_open, head, body_open, html_str, body_close, html_tag_close))
     html_str = re.sub("<body>", "<body style=\"width:60%; background-color: #F7F4F3; margin:auto; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;\">", html_str)
     html_str = re.sub("<h1>", "<h1 style=\"margin-top:10px;margin-bottom:15px;font-weight:bolder; font-size:400%; color:#5B2333; border-bottom: 8px solid #564D4A;\">", html_str)
-    html_str = re.sub("<hr>", "<hr style=\"background-color:#564D4A\">", html_str)
+    #html_str = re.sub("<hr>", "<hr style=\"background-color:#564D4A\">", html_str)
     html_str = re.sub("<code>", "<div class=\"timestamp\" style=\"margin-top:0px; margin-bottom:0px; color:#564D4A; font-size:80%\">", html_str)
     html_str = re.sub("</code>", "</div>", html_str)
     html_str = re.sub("<h2>", "<h2 style=\"margin-top:10px; margin-bottom:0px; font-size:180%; font-weight:normal\">", html_str)

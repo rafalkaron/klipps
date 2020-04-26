@@ -32,7 +32,6 @@ def main():
     
     clipps_directory = os.path.dirname(os.path.abspath(args.clipps_path))
     md_str = clipps_str_to_md_str(read_file(args.clipps_path))
-    
     html_str = md_str_to_html_str(md_str)
     
     if not args.no_style:
