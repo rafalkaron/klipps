@@ -10,7 +10,7 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
 def clipps_str_to_html_str(clipps_str):
     """Applies HTML syntax to a raw string from a \"Kindle Clippings.txt file\""""
-    # Search and Replace
+    # Search and Replace 1
     html_str = re.sub(r"- Your .* \| ", "", clipps_str)
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", html_str, re.MULTILINE):
         added_on_short = re.sub(r"^Added on .*, ", "", added_on, re.MULTILINE)
@@ -19,19 +19,17 @@ def clipps_str_to_html_str(clipps_str):
         html_str = re.sub(added_on, added_on_new, html_str)
     html_str = re.sub(r"==========", "<h2>", html_str)
     html_str = re.sub(r"<div class=\"timestamp\">", "</h2><div class=\"timestamp\">", html_str)
-    
     # Add missing elements
-    heading = "<h1>Kindle Clippings</h1><h2>"
-    footer = f"<div class=\"footer\">Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%-I:%-M %p')} with <a href='https://github.com/rafalkaron/Klipps/releases'>Klipps</a>.</div>"
     html_declaration = "<!DOCTYPE html>"
     html_tag_open = "<html>"
-    html_tag_close = "</html>"
     head = "<head></head>"
     body_open = "<body>"
+    heading = "<h1>Kindle Clippings</h1><h2>"
+    footer = f"<div class=\"footer\">Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%-I:%-M %p')} with <a href='https://github.com/rafalkaron/Klipps/releases'>Klipps</a>.</div>"
     body_close = "</body>"
+    html_tag_close = "</html>"
     html_str = "\n".join((html_declaration, html_tag_open, head, body_open, heading, html_str, footer, body_close, html_tag_close))
-    
-    # Search and Replace
+    # Search and Replace 2
     html_str = re.sub(r"<h2>\n<div class=\"footer\">", "<div class=\"footer\">", html_str)
     return html_str
 
