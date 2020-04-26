@@ -27,14 +27,10 @@ def main():
         parser.print_help()
         sys.exit(0)
     
-    clipps_directory = os.path.dirname(os.path.abspath(args.clipps_path))
     html_str = clipps_str_to_html_str(read_file(args.clipps_path))
-    
     if not args.no_style:
-        html_str = style_html_str(html_str) # Embeds styling into the html str.
-
-    publish_html5 = save_str_as_file(html_str, f"{clipps_directory}/My Clippings.html")
-
+        html_str = style_html_str(html_str)
+    publish_html5 = save_str_as_file(html_str, args.clipps_path.replace(".txt", ".html"))
     if not args.no_preview:
         open_file(publish_html5)
 

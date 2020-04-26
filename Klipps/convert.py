@@ -10,7 +10,7 @@ __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
 def clipps_str_to_html_str(clipps_str):
     """Applies HTML syntax to a raw string from a \"Kindle Clippings.txt file\""""
-    # Search and Replace 1
+    # Search and Replace 1 - think what can be moved down
     html_str = re.sub(r"- Your .* \| ", "", clipps_str)
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", html_str, re.MULTILINE):
         added_on_short = re.sub(r"^Added on .*, ", "", added_on, re.MULTILINE)
@@ -31,6 +31,7 @@ def clipps_str_to_html_str(clipps_str):
     html_str = "\n".join((html_declaration, html_tag_open, head, body_open, heading, html_str, footer, body_close, html_tag_close))
     # Search and Replace 2
     html_str = re.sub(r"<h2>\n<div class=\"footer\">", "<div class=\"footer\">", html_str)
+    html_str = re.sub(r"<h2>\n\n<div class=\"footer\">", "<div class=\"footer\">", html_str)
     return html_str
 
 def style_html_str(html_str):
