@@ -9,17 +9,11 @@ from Klipps import read_file_lines
 
 __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'    
 
-def clipps_str_to_md_str(clipps_str):
+def clipps_str_to_md_str(clipps_str):   ### Think of marking up kindle TXT directly to HTML
     """Applies Markdown syntax to a raw string from a \"Kindle Clippings.txt file\""""
-    """
-    clipps_lines = clipps_str.split()
-    for line in clipps_lines:
-        if line.startswith("=========="):
-            line = line + "\n## "
-        md_str = print(line)
-    """
-    md_str = re.sub("==========", "", clipps_str)
-    md_str = re.sub(r"- Your Highlight .* \| ", "", md_str)
+
+    md_str = re.sub("==========", "---------------", clipps_str)
+    md_str = re.sub(r"- Your .* \| ", "", md_str)
 
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", md_str, re.MULTILINE):
         added_on_short = re.sub(r"^Added on .*, ", "", added_on, re.MULTILINE)
@@ -72,14 +66,17 @@ def style_html_str(html_str):
     body_open = "<body>"
     body_close = "</body>"
     html_str = "\n".join((html_declaration, html_tag_open, head, body_open, html_str, body_close, html_tag_close))
+    ## This should be done in MD
+    html_str = re.sub("<h2>", "<div class=\"cite\" style=\"text-align:justify;border-bottom: 2px solid #564D4A; font-size:90%; margin-bottom:0px; margin-top:0px;\">", html_str)
+    html_str = re.sub("</h2>", "</div>", html_str)
+    
+    html_str = re.sub("<p>", "<h2 style=\"margin-top:10px; margin-bottom:0px; font-size:150%; font-weight:normal\">", html_str)
+    html_str = re.sub("</p>", "</h2>", html_str)
+
     html_str = re.sub("<body>", "<body style=\"width:60%; background-color: #F7F4F3; margin:auto; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;\">", html_str)
     html_str = re.sub("<h1>", "<h1 style=\"margin-top:10px;margin-bottom:15px;font-weight:bolder; font-size:400%; color:#5B2333; border-bottom: 8px solid #564D4A;\">", html_str)
-    #html_str = re.sub("<hr>", "<hr style=\"background-color:#564D4A\">", html_str)
-    html_str = re.sub("<code>", "<div class=\"timestamp\" style=\"margin-top:0px; margin-bottom:0px; color:#564D4A; font-size:80%\">", html_str)
+    html_str = re.sub("<code>", "<div class=\"timestamp\" style=\"margin-top:0px; margin-bottom:0px; font-weight:normal; color:#564D4A; font-size:60%\">", html_str)
     html_str = re.sub("</code>", "</div>", html_str)
-    html_str = re.sub("<h2>", "<h2 style=\"margin-top:10px; margin-bottom:0px; font-size:180%; font-weight:normal\">", html_str)
-    html_str = re.sub("<blockquote>", "<div class=\"cite\" style=\"text-align:justify;border-bottom: 2px solid #564D4A; font-size:90%; margin-bottom:0px; margin-top:0px;\">", html_str)
-    html_str = re.sub("</blockquote>", "</div>", html_str)
     html_str = re.sub("<a href=", "<a target='blank' style='text-decoration: none; color:#5B2333; font-weight:bold'href=", html_str)
     return html_str
 
