@@ -25,13 +25,15 @@ def clipps_str_to_html_str(clipps_str):
         added_on_shorter = re.sub(r":\d\d$", "", added_on_short, re.MULTILINE)
         added_on_new = f"<div class=\"timestamp\">{added_on_shorter}</div>"
         html_str = re.sub(added_on, added_on_new, html_str)
-    html_str = re.sub(r"<div class=\"timestamp\">", "</h2><div class=\"timestamp\">", html_str)
+    html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)
     html_str = re.sub(r"<h2>\n<div class=\"footer\">", "<div class=\"footer\">", html_str)
-    """
+    
     # Still buggy
-    for blockquote in re.findall(r">\n.*\n<", html_str, re.MULTILINE):
-        new_blockquote = f"><blockquote{blockquote}/blockquote><"
-        html_str = re.sub(blockquote, new_blockquote, html_str)
+    """
+    for blockquote_open in re.findall(r"<div class=\"timestamp\".*</div>", html_str, re.MULTILINE):
+        new_blockquote_open = f"{blockquote_open}<blockquote>"
+        html_str = re.sub(blockquote_open, new_blockquote_open, html_str)
+    html_str = re.sub("<h2>", "</blockquote></h2>", html_str)
     """
     return html_str
 
