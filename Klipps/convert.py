@@ -2,7 +2,6 @@
 Convert files to different formats.
 """
 
-import mistune
 import re
 import datetime
 
@@ -13,7 +12,7 @@ def clipps_str_to_html_str(clipps_str):
     # Add missing elements
     pre_elements = "<!DOCTYPE html>\n<html>\n\t<head></head>\n\t<body>"
     heading = "<h1>Kindle Clippings</h1><h2>"
-    footer = f"<div class=\"footer\">Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%-I:%-M %p')} with <a href='https://github.com/rafalkaron/Klipps/releases'>Klipps</a>.</div>"
+    footer = f"<div class=\"footer\">Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%I:%M %p')} with <a href=\"https://github.com/rafalkaron/Klipps/releases\">Klipps</a>.</div>"
     post_elements = "\t</body>\n</html>"
     html_str = "\n".join((pre_elements, heading, clipps_str, footer, post_elements))
     # Search and Replace
@@ -27,8 +26,7 @@ def clipps_str_to_html_str(clipps_str):
         html_str = re.sub(added_on, added_on_new, html_str)
     html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)
     html_str = re.sub(r"<h2>\n<div class=\"footer\">", "<div class=\"footer\">", html_str)
-    
-    html_str = re.sub("<h2>", "</blockquote></h2>", html_str)
+    html_str = re.sub("<h2>", "</blockquote><h2>", html_str)
     return html_str
 
 def style_html_str(html_str):
@@ -37,7 +35,7 @@ def style_html_str(html_str):
     html_str = re.sub("<body>", "<body style=\"width:60%; background-color: #F7F4F3; margin:auto; font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;\">", html_str)
     html_str = re.sub("<h1>", "<h1 style=\"margin-top:10px;margin-bottom:15px;font-weight:bolder; font-size:400%; color:#5B2333; border-bottom: 8px solid #564D4A;\">", html_str)
     html_str = re.sub("<h2>", "<h2 style=\"margin-top:10px; margin-bottom:0px; font-size:150%; font-weight:normal\">", html_str)
-    #html_str = re.sub("<div class=\"cite\">", "<div class=\"cite\" style=\"text-align:justify;border-bottom: 2px solid #564D4A; font-size:90%; margin-bottom:0px; margin-top:0px;\">", html_str)
+    html_str = re.sub("<blockquote>", "<blockquote style=\"text-align:justify; font-size:90%; margin-left:0px; margin-bottom:0px; margin-top:0px;\">", html_str)
     html_str = re.sub("<div class=\"timestamp\">", "<div class=\"timestamp\" style=\"margin-top:0px; margin-bottom:0px; font-weight:normal; color:#564D4A; font-size:80%\">", html_str)
     html_str = re.sub("<div class=\"footer\">", "<div class=\"footer\" style=\"margin-top:5px; margin-bottom:15px; text-align: right; font-size:90%\">", html_str)
     html_str = re.sub("<a href=", "<a target='blank' style='text-decoration: none; color:#5B2333; font-weight:bold'href=", html_str)
@@ -46,6 +44,6 @@ def style_html_str(html_str):
 def save_str_as_file(str, filepath):
     """Save a string as a file"""
     out = filepath
-    with open(out, "w") as file:
+    with open(out, "w", encoding="utf-8") as file:
         file.write(str)
     return out
