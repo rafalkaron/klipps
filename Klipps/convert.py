@@ -2,7 +2,7 @@
 import re
 import datetime
 
-__author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
+__author__ = "Rafał Karoń <rafalkaron@gmail.com>"
 
 def clipps_str_to_html_str(clipps_str):
     """Return a string that contains the converted \"Kindle Clippings.txt file\" to HTML."""

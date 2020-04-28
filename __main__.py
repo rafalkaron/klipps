@@ -19,14 +19,14 @@ __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
     pb(0)
-    parser = argparse.ArgumentParser(description="Convert your Kindle clippings to HTML.")
-    parser.add_argument('clipps_path', help=r'A file path to the "My Clippings.txt" file on your Kindle device that you want to convert to HTML. For example: "D:\Kindle\Documents\My Clippings.txt" (Windows) or "/Volumes/Kindle/documents/My Clippings.txt" (macOS). Remember to encapsulate the path in inverted commas!')
-    parser.add_argument("-nopr", "--no_preview", action="store_true", help="Prevents the converted files from opening.")
-    parser.add_argument("-ns", "--no_style", action = "store_true",help="Does not style the HTML file by embedding CSS syntax.")
+    par = argparse.ArgumentParser(description="Convert your Kindle clippings to HTML.")
+    par.add_argument('clipps_path', help=r'A file path to the "My Clippings.txt" file on your Kindle device that you want to convert to HTML. For example: "D:\Kindle\Documents\My Clippings.txt" (Windows) or "/Volumes/Kindle/documents/My Clippings.txt" (macOS). Remember to encapsulate the path in inverted commas!')
+    par.add_argument("-nopr", "--no_preview", action="store_true", help="Prevents the converted files from opening.")
+    par.add_argument("-ns", "--no_style", action = "store_true",help="Does not style the HTML file by embedding CSS syntax.")
     try:
-        args = parser.parse_args()
+        args = par.parse_args()
     except:
-        parser.print_help()
+        par.print_help()
         sys.exit(0)
     pb(10)
     html_str = clipps_str_to_html_str(read_file(args.clipps_path))

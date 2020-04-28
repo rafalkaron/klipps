@@ -1,9 +1,9 @@
 # coding: utf-8
-__author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
+__author__ = "Rafał Karoń <rafalkaron@gmail.com>"
 
 def progressbar(percent, length=50, prefix="Processing", fill="#", empty="-"):
     """Print a progress bar.
-    
+
     Keyword arguments:
     percent -- The integer that signifies the progress percent in the progress bar
     length -- The length of the progress bar

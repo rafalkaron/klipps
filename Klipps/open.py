@@ -1,5 +1,5 @@
 # coding: utf-8
-__author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
+__author__ = "Rafał Karoń <rafalkaron@gmail.com>"
 
 import webbrowser
 
