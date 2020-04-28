@@ -27,19 +27,19 @@ def main():
     except:
         parser.print_help()
         sys.exit(0)
-    progressbar("Converting Kindle Clippings", "#",  50, 25)
+    progressbar(25, prefix="Converting Kindle Clippings")
     html_str = clipps_str_to_html_str(read_file(args.clipps_path))
-    progressbar("Converting Kindle Clippings", "#",  50, 30)    
+    progressbar(30, prefix="Converting Kindle Clippings")    
     html_path = args.clipps_path.replace(".txt", ".html")
-    progressbar("Converting Kindle Clippings", "#",  50, 50)    
+    progressbar(50, prefix="Converting Kindle Clippings")    
     if not args.no_style:
         html_str = style_html_str(html_str)
-    progressbar("Converting Kindle Clippings", "#",  50, 75)
+    progressbar(75, prefix="Converting Kindle Clippings")
     publish_html5 = save_str_as_file(html_str, html_path)
-    progressbar("Converting Kindle Clippings", "#",  50, 90)
+    progressbar(90, prefix="Converting Kindle Clippings")
     if not args.no_preview:
         open_file(publish_html5)
-    progressbar("Converting Kindle Clippings", "#",  50, 100)
+    progressbar(100, prefix="Converting Kindle Clippings")
     print(f"Succesfully converted Kindle Clippings to: \"{html_path}\"")
 
 if __name__ == "__main__":
