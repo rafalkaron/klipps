@@ -12,12 +12,13 @@ from Klipps import (read_file,
                     style_html_str,
                     save_str_as_file,
                     open_file,
-                    progressbar)
+                    progressbar as pb)
 
-__version__ = "0.5"
+__version__ = "0.6"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
+    pb(0)
     parser = argparse.ArgumentParser(description="Convert your Kindle clippings to HTML.")
     parser.add_argument('clipps_path', help=r'A file path to the "My Clippings.txt" file on your Kindle device that you want to convert to HTML. For example: "D:\Kindle\Documents\My Clippings.txt" (Windows) or "/Volumes/Kindle/documents/My Clippings.txt" (macOS). Remember to encapsulate the path in inverted commas!')
     parser.add_argument("-nopr", "--no_preview", action="store_true", help="Prevents the converted files from opening.")
@@ -27,19 +28,19 @@ def main():
     except:
         parser.print_help()
         sys.exit(0)
-    progressbar(25, prefix="Converting Kindle Clippings")
+    pb(10)
     html_str = clipps_str_to_html_str(read_file(args.clipps_path))
-    progressbar(30, prefix="Converting Kindle Clippings")    
+    pb(25)    
     html_path = args.clipps_path.replace(".txt", ".html")
-    progressbar(50, prefix="Converting Kindle Clippings")    
+    pb(50)    
     if not args.no_style:
         html_str = style_html_str(html_str)
-    progressbar(75, prefix="Converting Kindle Clippings")
+    pb(75)
     publish_html5 = save_str_as_file(html_str, html_path)
-    progressbar(90, prefix="Converting Kindle Clippings")
+    pb(90)
     if not args.no_preview:
         open_file(publish_html5)
-    progressbar(100, prefix="Converting Kindle Clippings")
+    pb(100)
     print(f"Succesfully converted Kindle Clippings to: \"{html_path}\"")
 
 if __name__ == "__main__":

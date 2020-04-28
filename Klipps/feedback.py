@@ -1,16 +1,20 @@
+# coding: utf-8
 __author__ = 'Rafał Karoń <rafalkaron@gmail.com>'
 
 def progressbar(percent, length=50, prefix="Processing", fill="#", empty="-"):
-    """Call the function to print a progress bar.
+    """Print a progress bar.
     
-
+    Keyword arguments:
+    percent -- The integer that signifies the progress percent in the progress bar
+    length -- The length of the progress bar
+    prefix -- The text that precedes the progress bar (default \"Processing\")
+    fill -- The characters that signifies the progress in the progress bar (default \"#\")
+    empty -- The characters that signifies the empty space in the progress bar (default \" \")
     """
-    
-    empty_number = length-length*(percent/100)
     fill = "".join([fill for _ in range(int(length*(percent/100)))])
-    empty = "".join([empty for _ in range(int(empty_number))])
-    body = f"{prefix} [{fill}{empty}] {percent}%"
+    empty = "".join([empty for _ in range(int(length-length*(percent/100)))])
+    bar = f"{prefix} [{fill}{empty}] {percent}%"
     if percent < 100:
-        print(body, end="\r", flush="true")
+        print(bar, end="\r", flush="true")
     if percent == 100:
-        print(body)
+        print(bar)
