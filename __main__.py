@@ -26,16 +26,16 @@ def main():
     except:
         parser.print_help()
         sys.exit(0)
-    print('Converting Kindle Clippings [##########                              ] 25%', end='\r')
+    print('Converting Kindle Clippings [##########                              ] 25%', end='\r', flush="true")
     html_str = clipps_str_to_html_str(read_file(args.clipps_path))
-    print('Converting Kindle Clippings [############                            ] 30%', end='\r')
+    print('Converting Kindle Clippings [############                            ] 30%', end='\r', flush="true")
     html_path = args.clipps_path.replace(".txt", ".html")
-    print('Converting Kindle Clippings [####################                    ] 50%', end='\r')
+    print('Converting Kindle Clippings [####################                    ] 50%', end='\r', flush="true")
     if not args.no_style:
         html_str = style_html_str(html_str)
-    print('Converting Kindle Clippings [##############################          ] 75%', end='\r')
+    print('Converting Kindle Clippings [##############################          ] 75%', end='\r', flush="true")
     publish_html5 = save_str_as_file(html_str, html_path)
-    print('Converting Kindle Clippings [###################################     ] 90%', end='\r')
+    print('Converting Kindle Clippings [###################################     ] 90%', end='\r', flush="true")
     if not args.no_preview:
         open_file(publish_html5)
     print('Converting Kindle Clippings [########################################] 100%')
