@@ -8,18 +8,16 @@ def clipps_filepath():
     """Return the \"My Clippings.txt\" file path"""
 
     if os.name == "nt":
-        volumes = ["D", "E", "F", "G", "H"]
+        volumes = ["A", "D", "E", "F", "G", "H"]
         for volume in volumes:
-            try:
-                clipps_path = volume + r":\documents\My Clippings.txt"
-                clipps_exist = os.path.isfile(clipps_path)
-                break
-            except:
+            print(volume)
+            clipps_path = volume + r":\documents\My Clippings.txt"
+            clipps_exist = os.path.isfile(clipps_path)
+            if clipps_exist:
+                return clipps_path
+            if not clipps_exist:
                 continue
         
-        return clipps_path
-
-
     if os.name == "posix":
         clipps_path = r"/Volumes/Kindle/documents/My Clippings.txt"
         clipps_exist = os.path.isfile(clipps_path)
