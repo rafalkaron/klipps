@@ -33,10 +33,9 @@ def main():
         in_path = args.input
 
     if not args.output:
-        out_path = os.path.normpath(os.path.expanduser("~/Desktop")) + f"/{os.path.basename(in_path)}".replace(".txt", ".html")
+        out_path = f"{os.path.normpath(os.path.expanduser('~/Desktop'))}/{os.path.basename(in_path)}".replace(".txt", ".html").replace("\\", "/").replace("//", "/")
     if args.output:
-        out_path = args.output + f"/{os.path.basename(in_path)}".replace(".txt", ".html").replace("\\", "/").replace("//", "/")
-
+        out_path = f"{args.output}/{os.path.basename(in_path)}".replace(".txt", ".html").replace("\\", "/").replace("//", "/")
 
     pb(10)
     html_str = clipps_str_to_html_str(read_file(in_path))
