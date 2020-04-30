@@ -8,13 +8,15 @@ def clipps_filepath():
     """Return the \"My Clippings.txt\" file path"""
 
     if os.name == "nt":
-        volumes = ["A", "D", "E", "F", "G", "H"]
+        volumes = ["D", "E", "F", "G", "H", "I", "J", "K", "L", "manual"]
         for volume in volumes:
             print(volume)
             clipps_path = volume + r":\documents\My Clippings.txt"
             clipps_exist = os.path.isfile(clipps_path)
             if clipps_exist:
                 return clipps_path
+            if volume == "manual":
+                enter_clipps_filepath()
             if not clipps_exist:
                 continue
         
