@@ -35,7 +35,7 @@ def main():
     if not args.output:
         out_path = os.path.normpath(os.path.expanduser("~/Desktop")) + f"/{os.path.basename(in_path)}".replace(".txt", ".html")
     if args.output:
-        out_path = args.output
+        out_path = args.output + f"/{os.path.basename(in_path)}".replace(".txt", ".html").replace("\\", "/").replace("//", "/")
 
 
     pb(10)
@@ -50,10 +50,10 @@ def main():
         if not args.no_preview:
             open_file(publish_html)
         pb(100)
-        print(f"Succesfully converted Kindle Clippings to: \"{out_path}\"")
+        print(f"Succesfully converted Kindle clippings to: \"{out_path}\"")
     except(PermissionError):
         pb(100)
-        print("Permission Denied! Try running the command again as administrator.")
+        print("Permission Denied! Try running the command again as an administrator or selecting another directory.")
     
 if __name__ == "__main__":
     main()
