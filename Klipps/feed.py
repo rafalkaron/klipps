@@ -24,6 +24,10 @@ def clipps_filepath():
 
     return clipps_path
 
+def enter_filepath(prompt):
+    filepath = input("\nProvide the file path to the \"My Clippings.txt\" file manually or press [Enter] to exit Klipps: ")
+    return filepath
+
 def read_file(filepath):
     """Return a string with file contents."""
     with open(filepath, mode='rt', encoding='utf-8') as f:

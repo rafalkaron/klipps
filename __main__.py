@@ -52,7 +52,7 @@ def main():
         print(f"Succesfully converted Kindle clippings to: \"{out_path}\"")
     except(PermissionError):
         pb(100)
-        print("Permission Denied! Try running the command again as an administrator or selecting another directory.")
+        print("Permission Denied! Try running Klipps again as an administrator or selecting another directory.")
     
 if __name__ == "__main__":
     main()
