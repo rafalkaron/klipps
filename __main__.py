@@ -28,10 +28,11 @@ def main():
     
     if os.name == "nt":
         try:
-            clipps_path = r"E:\documents\My Clippings.txt"
-            clipps_exist = os.path.isfile(clipps_path)
-        except:
             clipps_path = r"D:\documents\My Clippings.txt"
+            clipps_exist = os.path.isfile(clipps_path)
+            print("tried!")
+        except:
+            clipps_path = r"E:\documents\My Clippings.txt"
             clipps_exist = os.path.isfile(clipps_path)
         else:
             print("Klipps cannot locate your Kindle Clippings file!' The \"My Clippings.txt\" file is saved in the \"Documents\" directory on your Kindle device.\nNote: Ensure that your Kindle is connected and discovered by the computer. Some third-party USB cables may prevent your computer from correctly discovering your Kindle device.")
@@ -50,7 +51,7 @@ def main():
     pb(10)
     html_str = clipps_str_to_html_str(read_file(clipps_path))
     pb(25)
-    html_path = clipps_path.replace(".txt", ".html")
+    html_path = os.path.normpath(os.path.expanduser("~/Desktop")) + f"/{os.path.basename(clipps_path)}".replace(".txt", ".html")
     pb(50)    
     if not args.no_style:
         html_str = style_html_str(html_str)
