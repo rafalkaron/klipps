@@ -23,16 +23,24 @@ def clipps_filepath():
     if os.name == "posix":
         clipps_path = r"/Volumes/Kindle/documents/My Clippings.txt"
         clipps_exist = os.path.isfile(clipps_path)
-        if clipps_exist == False:
-            enter_clipps_filepath()
-        return clipps_path
+        if clipps_exist:
+            return clipps_path
+        if not clipps_exist:
+            clipps_path = enter_clipps_filepath()
+            return clipps_path
 
 def enter_clipps_filepath():
-    print("Klipps cannot locate your Kindle Clippings file!' The \"My Clippings.txt\" file is saved in the \"Documents\" directory on your Kindle device.\nNote: Ensure that your Kindle is connected and discovered by the computer. Some third-party USB cables may prevent your computer from correctly discovering your Kindle device.")
-    clipps_path = input("\nProvide the file path to the \"My Clippings.txt\" file manually or press [Enter] to exit Klipps: ")
+    clipps_path = input("""
+Klipps cannot locate the \"My Clippings.txt\" file that is usually in the \"documents\" directory on your Kindle.
+    
+Before running Klipps again, ensure that:
+  * You highlighted some quotes while reading on your Kindle
+  * Your Kindle is connected to and discovered by your computer
+    NOTE: Some third-party USB cables may prevent your computer from correctly discovering your Kindle
+
+You can manually provide the \"My Clippings.txt\" file path or press [Enter] to exit Klipps: """).replace("\"", "").replace("\'","")
     filepath_exist = os.path.isfile(clipps_path)
     if filepath_exist == False:
-        print("")
         sys.exit(0)    
     return clipps_path
 

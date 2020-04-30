@@ -13,6 +13,7 @@ from Klipps import (read_file,
                     save_str_as_file,
                     open_file,
                     clipps_filepath,
+                    exit_prompt,
                     progressbar as pb)
 
 __version__ = "0.7"
@@ -52,7 +53,9 @@ def main():
         print(f"Succesfully converted Kindle clippings to: \"{out_path}\"")
     except(PermissionError):
         pb(100)
-        print("Permission Denied! Try running Klipps again as an administrator or selecting another directory.")
-    
+        print(f"Klipps cannot save the converted Kindle clippings as: \"{out_path}\" because you lack permissions.\nTry running Klipps again as an administrator or selecting another directory.")
+
+    exit_prompt("\nTo exit Klipps, press [Enter]")
+
 if __name__ == "__main__":
     main()
