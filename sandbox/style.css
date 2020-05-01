@@ -3,23 +3,18 @@ body{
     font-size: 100%;
     background-color: #F2E9E4; 
     margin:auto; 
-    font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;
-}
-
-.row{
-    display: flex;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .entry{
     border: 2px solid #22223B;
     border-radius: 10px;
     margin: 2px; 
-    width: 48%; 
-    flex: 50%;
 }
 
 h1{
     font-size:7rem;
+    font-weight:lighter;
     text-align: center;
     margin-top: 0.2em;
     margin-bottom: 0.4em;
@@ -42,7 +37,5 @@ blockquote{
 }
 
 .footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    clear: both;
 }
