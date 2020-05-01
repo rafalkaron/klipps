@@ -28,7 +28,7 @@ def clipps_str_to_html_str(clipps_str):
     return html_str
 
 def style_html_str(html_str):
-    # ADDS ROW DIV
+    # ADDS ROW DIV - need to add it every second instance
     #html_str = re.sub("<div class=\"entry\">", "<div class=\"row\">\n<div class=\"entry\">", html_str)
     #html_str = re.sub("</blockquote>\n</div>", "</blockquote>\n</div>\n</div>", html_str)
     # ADDS A TITLE, FAVICON, AND CSS
