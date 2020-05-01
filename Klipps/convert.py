@@ -8,7 +8,7 @@ def clipps_str_to_html_str(clipps_str):
     """Return a string that contains the converted \"Kindle Clippings.txt file\" to HTML."""
     # Add missing elements
     pre_elements = "<!DOCTYPE html>\n<html>\n<head></head>\n<body>"
-    heading = "<h1>Kindle Clippings</h1><h2>"
+    heading = "<h1>Kindle Clippings</h1>\n<h2>"
     footer = f"<div class=\"footer\">Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%I:%M %p')} with <a href=\"https://github.com/rafalkaron/Klipps/releases\">Klipps</a></div>"
     post_elements = "</body>\n</html>"
     html_str = "\n".join((pre_elements, heading, clipps_str, footer, post_elements))
@@ -25,6 +25,8 @@ def clipps_str_to_html_str(clipps_str):
     html_str = re.sub(r"<div class=\"entry\">\n<h2>\n<div class=\"footer\">", "</blockquote>\n<div class=\"footer\">", html_str)
     html_str = re.sub("<div class=\"entry\">\n<h2>", "</blockquote>\n<div class=\"entry\">\n<h2>", html_str)
     html_str = re.sub(r"</h1></blockquote>\n<h2>", "</h1>\n<h2>", html_str)
+    html_str = re.sub(r"</h1>\n<h2>", "</h1>\n<div class=\"entry\">\n<h2>", html_str)
+    
     html_str = re.sub("</blockquote>", "</blockquote>\n</div>", html_str)
 
     return html_str
