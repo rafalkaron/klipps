@@ -28,7 +28,7 @@ def clipps_filepath():
         if not clipps_exist:
             clipps_path = enter_clipps_filepath()
             return clipps_path
-
+    
 def enter_clipps_filepath():
     clipps_path = input("""
 Klipps cannot locate the \"My Clippings.txt\" file that is usually in the \"documents\" directory on your Kindle.

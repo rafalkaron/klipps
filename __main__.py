@@ -20,6 +20,7 @@ __version__ = "0.8"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
+    print(f"Let's export your Kindle clippings with Klipps {__version__}!")
     par = argparse.ArgumentParser(description="Export clippings from a Kindle device to an HTML file on your desktop.", formatter_class=argparse.RawTextHelpFormatter)
     par.add_argument("-v", "--version", action="version", version=f"%(prog)s {__version__}")
     par.add_argument("-in", "--input", metavar="clippings_file_path", help="manually specify the \"My Clippings.txt\" file path (defaults to the \"My Clippings.txt\" file path on a connected Kindle device)")
@@ -32,6 +33,7 @@ def main():
         in_path = clipps_filepath()
     if args.input:
         in_path = args.input
+    print(f"Klipps will export the following file: \"{in_path}\"")
     if not args.output:
         out_path = f"{os.path.normpath(os.path.expanduser('~/Desktop'))}/{os.path.basename(in_path)}".replace(".txt", ".html").replace("\\", "/").replace("//", "/")
     if args.output:
@@ -48,7 +50,7 @@ def main():
         if not args.no_preview:
             open_file(publish_html)
         pb(100)
-        print(f"Succesfully converted Kindle clippings to: \"{out_path}\"")
+        print(f"Succesfully exported Kindle clippings to: \"{out_path}\"")
     except(PermissionError):
         pb(100)
         print(f"Klipps cannot save the converted Kindle clippings as: \"{out_path}\" because you lack permissions.\nTry running Klipps again as an administrator or selecting another directory.")
