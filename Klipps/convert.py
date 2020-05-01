@@ -7,10 +7,10 @@ __author__ = "Rafał Karoń <rafalkaron@gmail.com>"
 def clipps_str_to_html_str(clipps_str):
     """Return a string that contains the converted \"Kindle Clippings.txt file\" to HTML."""
     # Add missing elements
-    pre_elements = "<!DOCTYPE html>\n<html>\n\t<head></head>\n\t<body>"
+    pre_elements = "<!DOCTYPE html>\n<html>\n<head></head>\n<body>"
     heading = "<h1>Kindle Clippings</h1><h2>"
     footer = f"<div class=\"footer\">Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%I:%M %p')} with <a href=\"https://github.com/rafalkaron/Klipps/releases\">Klipps</a></div>"
-    post_elements = "\t</body>\n</html>"
+    post_elements = "</body>\n</html>"
     html_str = "\n".join((pre_elements, heading, clipps_str, footer, post_elements))
     # Search and Replace
     html_str = re.sub(r"\n\n", "\n", html_str)
@@ -19,11 +19,13 @@ def clipps_str_to_html_str(clipps_str):
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", html_str, re.MULTILINE):
         added_on_short = re.sub(r"^Added on .*, ", "", added_on, re.MULTILINE)
         added_on_shorter = re.sub(r":\d\d$", "", added_on_short, re.MULTILINE)
-        added_on_new = f"<div class=\"timestamp\">{added_on_shorter}</div><blockquote>"
+        added_on_new = f"<div class=\"timestamp\">{added_on_shorter}</div>\n<blockquote>"
         html_str = re.sub(added_on, added_on_new, html_str)
     html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)
-    html_str = re.sub(r"<h2>\n<div class=\"footer\">", "<div class=\"footer\">", html_str)
-    html_str = re.sub("<h2>", "</blockquote><h2>", html_str)
+    html_str = re.sub(r"<h2>\n<div class=\"footer\">", "</blockquote>\n<div class=\"footer\">", html_str)
+    html_str = re.sub("<h2>", "</blockquote>\n<h2>", html_str)
+    html_str = re.sub(r"</h1></blockquote>\n<h2>", "</h1>\n<h2>", html_str)
+
     return html_str
 
 def style_html_str(html_str): #redo with internal css
