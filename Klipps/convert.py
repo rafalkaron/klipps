@@ -14,7 +14,7 @@ def clipps_str_to_html_str(clipps_str):
     html_str = "\n".join((pre_elements, heading, clipps_str, footer, post_elements))
     # Search and Replace
     html_str = re.sub(r"\n\n", "\n", html_str)
-    html_str = re.sub(r"==========", "<h2>", html_str)
+    html_str = re.sub(r"==========", "<div class=\"entry\">\n<h2>", html_str)
     html_str = re.sub(r"- Your .* \| ", "", html_str)
     for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", html_str, re.MULTILINE):
         added_on_short = re.sub(r"^Added on .*, ", "", added_on, re.MULTILINE)
@@ -22,9 +22,10 @@ def clipps_str_to_html_str(clipps_str):
         added_on_new = f"<div class=\"timestamp\">{added_on_shorter}</div>\n<blockquote>"
         html_str = re.sub(added_on, added_on_new, html_str)
     html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)
-    html_str = re.sub(r"<h2>\n<div class=\"footer\">", "</blockquote>\n<div class=\"footer\">", html_str)
-    html_str = re.sub("<h2>", "</blockquote>\n<h2>", html_str)
+    html_str = re.sub(r"<div class=\"entry\">\n<h2>\n<div class=\"footer\">", "</blockquote>\n<div class=\"footer\">", html_str)
+    html_str = re.sub("<div class=\"entry\">\n<h2>", "</blockquote>\n<div class=\"entry\">\n<h2>", html_str)
     html_str = re.sub(r"</h1></blockquote>\n<h2>", "</h1>\n<h2>", html_str)
+    html_str = re.sub("</blockquote>", "</blockquote>\n</div>", html_str)
 
     return html_str
 
