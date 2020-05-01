@@ -19,7 +19,6 @@ h1{
     margin-top: 0.2em;
     margin-bottom: 0.4em;
     margin: 1em, 0em, 1em, 0em;
-    font-weight: lighter;
     color: #22223B;
 }
 
@@ -40,4 +39,5 @@ blockquote{
 .footer{
     position: fixed;
     bottom: 0;
+    width: 100%;
 }

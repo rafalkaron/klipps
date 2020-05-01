@@ -26,6 +26,7 @@ def main():
     par.add_argument("-out", "--output", metavar="output_folder", help="manually specify the output folder for the HTML file with converted clippings (defaults to desktop)")
     par.add_argument("-nopr", "--no_preview", action="store_true", help="do not automatically open the HTML file with converted clippings")
     par.add_argument("-ns", "--no_style", action ="store_true", help="do not add CSS styling to the HTML file with converted clippings")
+    par.add_argument("-ex", "--exit", action ="store_true", help="exits without a prompt (defaults to prompt on exit")
     args = par.parse_args()
     if not args.input:
         in_path = clipps_filepath()
@@ -51,7 +52,9 @@ def main():
     except(PermissionError):
         pb(100)
         print(f"Klipps cannot save the converted Kindle clippings as: \"{out_path}\" because you lack permissions.\nTry running Klipps again as an administrator or selecting another directory.")
-    exit_prompt("\nTo exit Klipps, press [Enter]")
+    
+    if not args.exit:
+        exit_prompt("\nTo exit Klipps, press [Enter]")
 
 if __name__ == "__main__":
     main()
