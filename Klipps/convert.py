@@ -6,32 +6,29 @@ __author__ = "Rafał Karoń <rafalkaron@gmail.com>"
 
 def clipps_str_to_html_str(clipps_str):
     """Return a string that contains the converted \"Kindle Clippings.txt file\" to HTML."""
-    # Add missing elements
+    # ADD ELEMENTS
     pre_elements = "<!DOCTYPE html>\n<html>\n<head></head>\n<body>"
     heading = "<h1>Kindle Clippings</h1>\n<h2>"
     footer = f"<div class=\"footer\">Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%I:%M %p')} with <a href=\"https://github.com/rafalkaron/Klipps/releases\">Klipps</a></div>"
     post_elements = "</body>\n</html>"
     html_str = "\n".join((pre_elements, heading, clipps_str, footer, post_elements))
-    # Search and Replace
-    html_str = re.sub(r"\n\n", "\n", html_str)
-    html_str = re.sub(r"==========", "<div class=\"entry\">\n<h2>", html_str)
-    html_str = re.sub(r"- Your .* \| ", "", html_str)
-    for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", html_str, re.MULTILINE):
+    # SEARCH AND REPLACE
+    html_str = re.sub(r"\n\n", "\n", html_str)  # Removes empty lines
+    html_str = re.sub(r"==========", "<div class=\"entry\">\n<h2>", html_str)   # Replaces Kindle entryies markup with the "entry" class and opens headers 2
+    html_str = re.sub(r"- Your .* \| ", "", html_str)   # Removes redundant information from timestamps
+    for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", html_str, re.MULTILINE):    # Shortens and wraps timestamps
         added_on_short = re.sub(r"^Added on .*, ", "", added_on, re.MULTILINE)
-        added_on_shorter = re.sub(r":\d\d$", "", added_on_short, re.MULTILINE)
-        added_on_new = f"<div class=\"timestamp\">{added_on_shorter}</div>\n<blockquote>"
+        added_on_short = re.sub(r":\d\d$", "", added_on_short, re.MULTILINE)
+        added_on_new = f"<div class=\"timestamp\">{added_on_short}</div>\n<blockquote>"
         html_str = re.sub(added_on, added_on_new, html_str)
-    html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)
-    html_str = re.sub(r"<div class=\"entry\">\n<h2>\n<div class=\"footer\">", "</blockquote>\n<div class=\"footer\">", html_str)
-    html_str = re.sub("<div class=\"entry\">\n<h2>", "</blockquote>\n<div class=\"entry\">\n<h2>", html_str)
-    html_str = re.sub(r"</h1></blockquote>\n<h2>", "</h1>\n<h2>", html_str)
-    html_str = re.sub(r"</h1>\n<h2>", "</h1>\n<div class=\"entry\">\n<h2>", html_str)
-    
-    html_str = re.sub("</blockquote>", "</blockquote>\n</div>", html_str)
+    html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)   # Closes headers 2 before timestamps
+    html_str = re.sub(r"<div class=\"entry\">\n<h2>\n<div class=\"footer\">", "</blockquote>\n<div class=\"footer\">", html_str)    # Removes redundant entry divs and headers 2 before the footer
+    html_str = re.sub("<div class=\"entry\">\n<h2>", "</blockquote>\n</div>\n<div class=\"entry\">\n<h2>", html_str)    # Closes blockquote and entry div before opening anothe entry div
+    html_str = re.sub(r"</h1>\n<h2>", "</h1>\n<div class=\"entry\">\n<h2>", html_str)   # Opens the first element div after
 
     return html_str
 
-def style_html_str(html_str): #redo with internal css
+def style_html_str(html_str):
     """Return a string that contains the converted to HTML \"Kindle Clippings.txt file\" with embedded CSS and an encoded favicon."""
     html_str = re.sub("<head></head>", """<head>
 <title>Kindle Clippings</title>

@@ -16,7 +16,7 @@ from Klipps import (clipps_filepath,
                     open_file,
                     exit_prompt)
 
-__version__ = "0.7"
+__version__ = "0.8"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
@@ -26,7 +26,7 @@ def main():
     par.add_argument("-out", "--output", metavar="output_folder", help="manually specify the output folder for the HTML file with converted clippings (defaults to desktop)")
     par.add_argument("-nopr", "--no_preview", action="store_true", help="do not automatically open the HTML file with converted clippings")
     par.add_argument("-ns", "--no_style", action ="store_true", help="do not add CSS styling to the HTML file with converted clippings")
-    par.add_argument("-ex", "--exit", action ="store_true", help="exits without a prompt (defaults to prompt on exit")
+    par.add_argument("-ex", "--exit", action ="store_true", help="exits without a prompt (defaults to prompt on exit)")
     args = par.parse_args()
     if not args.input:
         in_path = clipps_filepath()
