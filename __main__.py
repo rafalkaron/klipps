@@ -20,7 +20,7 @@ __version__ = "0.8"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
-    par = argparse.ArgumentParser(description="Export clippings from Kindle to a HTML file on your desktop.", formatter_class=argparse.RawTextHelpFormatter)
+    par = argparse.ArgumentParser(description="Export clippings from a Kindle device to an HTML file on your desktop.", formatter_class=argparse.RawTextHelpFormatter)
     par.add_argument("-v", "--version", action="version", version=f"%(prog)s {__version__}")
     par.add_argument("-in", "--input", metavar="clippings_file_path", help="manually specify the \"My Clippings.txt\" file path (defaults to the \"My Clippings.txt\" file path on a connected Kindle device)")
     par.add_argument("-out", "--output", metavar="output_folder", help="manually specify the output folder for the HTML file with converted clippings (defaults to desktop)")
