@@ -1,7 +1,7 @@
-# Klipps
+# Klipps Overview
 *Klipps enables you to export your Kindle Clippings to a HTML file.*
 
-## Klipps Quick Start Guide
+## Klipps Operation
 *You export your Kindle clippings by connecting your Kindle device to a computer and running Klipps.*  
 **Note:** You can edit the default **Klipps** behavior by using dedicated arguments. For more information, run **Klipps** with the `--help` argument.
 
@@ -16,9 +16,7 @@
 3. Double-click the downloaded **Klipps** application.  
 **Result:** Klipps opens in a **Terminal** window and tries to automatically detect the clippings file on the connected Kindle device.
 4. If a prompt appears, enter the clippings file path manually.
-5. If needed, accept every security prompt. See:
-   * [Accepting macOS Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-Security-Prompts)
-   * [Accepting Windows Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-Windows-Security-Prompts)  
+5. If needed, accept every security prompt. See [Accepting macOS Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-Security-Prompts) or [Accepting Windows Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-Windows-Security-Prompts).  
 **Result:** Klipps exports the Kindle clippings file to a HTML file and saves the HTML file on your desktop.
 1. Close the **Klipps** window.
 
