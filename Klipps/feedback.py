@@ -1,7 +1,7 @@
 # coding: utf-8
 __author__ = "Rafał Karoń <rafalkaron@gmail.com>"
 
-def progressbar(percent, length=50, prefix="Exporting Kindle clippings", fill="#", empty="-"):
+def progressbar(percent, length=50, prefix="Exporting", fill="#", empty="-"):
     """Print a progress bar.
 
     Keyword arguments:
@@ -20,7 +20,7 @@ def progressbar(percent, length=50, prefix="Exporting Kindle clippings", fill="#
         print(bar)
 
 def exit_prompt(prompt):
-    """Prompt to exit the program on pressing the Enter key."""
+    """Prompt to exit the program by pressing the Enter key."""
     response = input(prompt)
     if response:
         exit(0)

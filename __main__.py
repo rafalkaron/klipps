@@ -7,7 +7,8 @@ import sys
 import re
 import os
 import argparse
-from Klipps import (clipps_filepath,
+import time
+from Klipps import (get_clipps_filepath,
                     read_file,
                     progressbar as pb,
                     clipps_str_to_html_str,
@@ -30,15 +31,16 @@ def main():
     par.add_argument("-ex", "--exit", action ="store_true", help="exits without a prompt (defaults to prompt on exit)")
     args = par.parse_args()
     if not args.input:
-        in_path = clipps_filepath()
+        in_path = get_clipps_filepath()
     if args.input:
         in_path = args.input
-    print(f"Klipps will export the following file: \"{in_path}\"")
+    print(f"Klipps will export the following file \"{in_path}\"")
     if not args.output:
         out_path = f"{os.path.normpath(os.path.expanduser('~/Desktop'))}/{os.path.basename(in_path)}".replace(".txt", ".html").replace("\\", "/").replace("//", "/")
     if args.output:
         out_path = f"{args.output}/{os.path.basename(in_path)}".replace(".txt", ".html").replace("\\", "/").replace("//", "/")
     pb(10)
+    start_time = time.time()
     html_str = clipps_str_to_html_str(read_file(in_path))
     pb(50)    
     if not args.no_style:
@@ -50,10 +52,11 @@ def main():
         if not args.no_preview:
             open_file(publish_html)
         pb(100)
-        print(f"Succesfully exported Kindle clippings to: \"{out_path}\"")
+        elapsed_time = time.time() - start_time
+        print(f"Klipss succesfully exported Kindle clippings to \"{out_path}\" in {int(elapsed_time)} seconds.")
     except(PermissionError):
         pb(100)
-        print(f"Klipps cannot save the converted Kindle clippings as: \"{out_path}\" because you lack permissions.\nTry running Klipps again as an administrator or selecting another directory.")
+        print(f"Klipps cannot save the converted Kindle clippings as \"{out_path}\" because you lack permissions.\nTry running Klipps again as an administrator or selecting another directory.")
     
     if not args.exit:
         exit_prompt("\nTo exit Klipps, press [Enter]")

@@ -4,9 +4,9 @@ import sys
 
 __author__ = "Rafał Karoń <rafalkaron@gmail.com>"
 
-def clipps_filepath():
+def get_clipps_filepath():
     """Automatically return the \"My Clippings.txt\" file path.
-    Prompt the user to provide the \"My Clippings.txt\" file path as a fallback."""
+    As a fallback, call the enter_clipps_filepath() function to prompt the user to provide the \"My Clippings.txt\" file path."""
 
     if os.name == "nt":
         drive_letters = ["D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "manual"]
@@ -30,6 +30,8 @@ def clipps_filepath():
             return clipps_path
     
 def enter_clipps_filepath():
+    """Enter the \"My Clippings.txt\" file path.
+    This function is called as a fallback of the "get_clipps_filepath()" function."""
     clipps_path = input("""
 Klipps cannot locate the \"My Clippings.txt\" file that is usually in the \"documents\" directory on your Kindle.
     
