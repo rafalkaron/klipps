@@ -16,7 +16,7 @@ def clipps_str_to_html_str(clipps_str):
 </head>
 <body>"""
     heading = "<h1>Kindle Clippings</h1>\n<h2>"
-    footer = f"<footer>Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%I:%M %p')} with <a href=\"https://github.com/rafalkaron/Klipps/releases\">Klipps</a></footer>"
+    footer = f"<footer>Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%I:%M %p')} with <a target=\"_blank\" href=\"https://github.com/rafalkaron/Klipps\">Klipps</a></footer>"
     post_elements = "</body>\n</html>"
     html_str = "\n".join((pre_elements, heading, clipps_str, footer, post_elements))
     # SEARCH AND REPLACE
