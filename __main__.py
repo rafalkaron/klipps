@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Connect your Kindle to the computer, run Klipps, and automatically export your Kindle klippings to an HTML file on your desktop.
+Connect your Kindle to the computer, run Klipps, and automatically export your Kindle clippings to an HTML file on your desktop.
 """
 
 import sys
@@ -51,8 +51,8 @@ def main():
         pb(90)
         if not args.no_preview:
             open_file(publish_html)
+        elapsed_time = time.time() - start_time # does not work without Kindle attached.
         pb(100)
-        elapsed_time = time.time() - start_time
         print(f"Klipss succesfully exported Kindle clippings to \"{out_path}\" in {int(elapsed_time)} seconds.")
     except(PermissionError):
         pb(100)
