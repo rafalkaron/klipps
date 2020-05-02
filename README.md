@@ -1,9 +1,9 @@
-# Klipps Overview
-*Klipps enables you to export your Kindle Clippings to a HTML file.*
+# Klipps
+*Klipps enables you to export your Kindle clippings to an HTML file.*
 
 ## Klipps Operation
 *You export your Kindle clippings by connecting your Kindle device to a computer and running Klipps.*  
-**Note:** You can edit the default **Klipps** behavior by using dedicated arguments. For more information, run **Klipps** with the `--help` argument.
+**Note:** You can edit the default **Klipps** behavior by using dedicated arguments. For more information, see [Accessing Klipps Help](https://github.com/rafalkaron/Klipps/wiki/Accessing-Klipps-Help).
 
 ### Before you begin
   * Ensure that you highlighted some quotes while reading on your Kindle.

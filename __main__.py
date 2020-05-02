@@ -29,7 +29,7 @@ def main():
     par.add_argument("-out", "--output", metavar="output_folder", help="manually specify the output folder for the HTML file with converted clippings (defaults to desktop)")
     par.add_argument("-nopr", "--no_preview", action="store_true", help="do not automatically open the HTML file with converted clippings")
     par.add_argument("-ns", "--no_style", action ="store_true", help="do not add CSS styling to the HTML file with converted clippings")
-    par.add_argument("-css", "--custom_style", help="provide a file path to a CSS file with custom styling that you want to embed into the HTML file with converted clippings")
+    par.add_argument("-css", "--custom_style", metavar="custom_css_file_path", help="provide a file path to a CSS file with custom styling that you want to embed into the HTML file with converted clippings")
     par.add_argument("-ex", "--exit", action ="store_true", help="exits without a prompt (defaults to prompt on exit)")
     args = par.parse_args()
     if not args.input:
