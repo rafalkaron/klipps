@@ -15,12 +15,13 @@ def clipps_str_to_html_str(clipps_str):
     # SEARCH AND REPLACE
     html_str = re.sub(r"\n\n", "\n", html_str)  # Removes empty lines
     html_str = re.sub(r"==========", "<div class=\"entry\">\n<h2>", html_str)   # Replaces Kindle entryies markup with the "entry" class and opens headers 2
-    html_str = re.sub(r"- Your .* \| ", "", html_str)   # Removes redundant information from timestamps
-    for added_on in re.findall(r"^Added on .*,*. \d.* \d\d:\d\d:\d\d$", html_str, re.MULTILINE):    # Shortens and wraps timestamps
-        added_on_short = re.sub(r"^Added on .*, ", "", added_on, re.MULTILINE)
-        added_on_short = re.sub(r":\d\d$", "", added_on_short, re.MULTILINE)
-        added_on_new = f"<div class=\"timestamp\">{added_on_short}</div>\n<blockquote>"
+    html_str = re.sub(r"- .* \| ", "###timestamp### ", html_str)   # Removes redundant information from timestamps
+    for added_on in re.findall(r"^###timestamp### .*", html_str, re.MULTILINE):    # Shortens and wraps timestamps || MAKE THIS GENERIC FOR OTHER LANGUAGES
+        added_on_new = re.sub(r"Added on .*, ", "", added_on, re.MULTILINE)
+        added_on_new = re.sub(r":\d\d$", "", added_on_new, re.MULTILINE)
+        added_on_new = f"<div class=\"timestamp\">{added_on_new}</div>\n<blockquote>"
         html_str = re.sub(added_on, added_on_new, html_str)
+    html_str = re.sub(r"###timestamp### ", "", html_str)
     html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)   # Closes headers 2 before timestamps
     html_str = re.sub(r"<div class=\"entry\">\n<h2>\n<div class=\"footer\">", "</blockquote>\n</div>\n<div class=\"footer\">", html_str)    # Removes redundant entry divs and headers 2 before the footer
     html_str = re.sub("<div class=\"entry\">\n<h2>", "</blockquote>\n</div>\n<div class=\"entry\">\n<h2>", html_str)    # Closes blockquote and entry div before opening anothe entry div
