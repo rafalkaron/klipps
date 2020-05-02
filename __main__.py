@@ -57,7 +57,6 @@ def main():
     except(PermissionError):
         pb(100)
         print(f"Klipps cannot save the converted Kindle clippings as \"{out_path}\" because you lack permissions.\nTry running Klipps again as an administrator or selecting another directory.")
-    
     if not args.exit:
         exit_prompt("\nTo exit Klipps, press [Enter]")
 
