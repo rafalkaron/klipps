@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Export a \"My Clippings.txt\" Kindle file to HTML5.
+Connect your Kindle to the computer, run Klipps, and automatically export your Kindle klippings to an HTML file on your desktop.
 """
 
 import sys

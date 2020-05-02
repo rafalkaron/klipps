@@ -36,7 +36,8 @@ blockquote{
     text-align: justify;
 }
 
-.footer{
+footer{
+    display: block;
     clear: both;
 }
 

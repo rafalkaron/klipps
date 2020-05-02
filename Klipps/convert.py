@@ -9,7 +9,7 @@ def clipps_str_to_html_str(clipps_str):
     # ADD ELEMENTS
     pre_elements = "<!DOCTYPE html>\n<html>\n<head></head>\n<body>"
     heading = "<h1>Kindle Clippings</h1>\n<h2>"
-    footer = f"<div class=\"footer\">Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%I:%M %p')} with <a href=\"https://github.com/rafalkaron/Klipps/releases\">Klipps</a></div>"
+    footer = f"<footer>Generated on {datetime.datetime.now().strftime('%B %d, %Y')} at {datetime.datetime.now().strftime('%I:%M %p')} with <a href=\"https://github.com/rafalkaron/Klipps/releases\">Klipps</a></footer>"
     post_elements = "</body>\n</html>"
     html_str = "\n".join((pre_elements, heading, clipps_str, footer, post_elements))
     # SEARCH AND REPLACE
@@ -25,7 +25,7 @@ def clipps_str_to_html_str(clipps_str):
         added_on_new = f"<div class=\"timestamp\">{added_on_new}</div>\n<blockquote>"   # Wraps timestamps in timestamp divs and opens a blockquote
         html_str = re.sub(added_on, added_on_new, html_str)
     html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)   # Closes headers 2 before timestamps
-    html_str = re.sub(r"<div class=\"entry\">\n<h2>\n<div class=\"footer\">", "</blockquote>\n</div>\n<div class=\"footer\">", html_str)    # Removes redundant entry divs and headers 2 before the footer
+    html_str = re.sub(r"<div class=\"entry\">\n<h2>\n<footer>", "</blockquote>\n</div>\n<footer>", html_str)    # Removes redundant entry divs and headers 2 before the footer
     html_str = re.sub("<div class=\"entry\">\n<h2>", "</blockquote>\n</div>\n<div class=\"entry\">\n<h2>", html_str)    # Closes blockquote and entry div before opening anothe entry div
     html_str = re.sub(r"</h1>\n<h2>", "</h1>\n<div class=\"entry\">\n<h2>", html_str)   # Opens the first element div after
     return html_str
@@ -79,9 +79,14 @@ blockquote{
     text-align: justify;
 }
 
-.footer{
-    position: fixed;
-    bottom: 0;
+footer{
+    display: block;
+    clear: both;
+}
+
+a{
+    font-weight: bold;
+    text-decoration: none;
 }
 </style>
 </head> """, html_str)
