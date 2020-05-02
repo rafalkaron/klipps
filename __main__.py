@@ -18,7 +18,7 @@ from Klipps import (get_clipps_filepath,
                     open_file,
                     exit_prompt)
 
-__version__ = "0.8"
+__version__ = "0.8.1"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
