@@ -39,57 +39,12 @@ def clipps_str_to_html_str(clipps_str):
 
 def default_style_html_str(html_str):
     """Return a string that contains the \"Kindle Clippings.txt file\" converted to HTML with a default embedded CSS style."""
-    html_str = re.sub("/>\n</head>", """/>
+    style = read_file("style/default.css")
+    html_str = re.sub("/>\n</head>", f"""/>
 <style>
 
-body{
-width:90%; 
-font-size: 100%;
-background-color: #F2E9E4; 
-margin:auto; 
-font-family: \'Helvetica Neue\', Helvetica, Arial, sans-serif;
-}
-.entry{
-    border: 2px solid #22223B;
-    border-radius: 10px;
-    margin: 2px; 
-    width: 48%; 
-    float: left;
-}
+{style}
 
-h1{
-    font-size:7rem;
-    text-align: center;
-    margin-top: 0.2em;
-    margin-bottom: 0.4em;
-    margin: 1em, 0em, 1em, 0em;
-    font-weight: lighter;
-    color: #22223B;
-}
-
-h2{
-    color: #4A4E69
-}
-
-.timestamp{
-    color: #9A8C98;
-}
-
-blockquote{
-    background-color: #C9ADA7; padding: 1em; margin: 0em;
-    border-radius: 0px 0px 10px 10px;
-    text-align: justify;
-}
-
-footer{
-    display: block;
-    clear: both;
-}
-
-a{
-    font-weight: bold;
-    text-decoration: none;
-}
 </style>
 </head>""", html_str)
     return html_str
