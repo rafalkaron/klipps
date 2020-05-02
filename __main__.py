@@ -12,7 +12,8 @@ from Klipps import (get_clipps_filepath,
                     read_file,
                     progressbar as pb,
                     clipps_str_to_html_str,
-                    style_html_str,
+                    default_style_html_str,
+                    custom_style_html_str,
                     save_str_as_file,
                     open_file,
                     exit_prompt)
@@ -28,6 +29,7 @@ def main():
     par.add_argument("-out", "--output", metavar="output_folder", help="manually specify the output folder for the HTML file with converted clippings (defaults to desktop)")
     par.add_argument("-nopr", "--no_preview", action="store_true", help="do not automatically open the HTML file with converted clippings")
     par.add_argument("-ns", "--no_style", action ="store_true", help="do not add CSS styling to the HTML file with converted clippings")
+    par.add_argument("-css", "--custom_style", help="provide a file path to a CSS file with custom styling that you want to embed into the HTML file with converted clippings")
     par.add_argument("-ex", "--exit", action ="store_true", help="exits without a prompt (defaults to prompt on exit)")
     args = par.parse_args()
     if not args.input:
@@ -42,9 +44,13 @@ def main():
     pb(10)
     start_time = time.time()
     html_str = clipps_str_to_html_str(read_file(in_path))
-    pb(50)    
-    if not args.no_style:
-        html_str = style_html_str(html_str)
+    pb(50)
+
+    if args.custom_style:
+        html_str = custom_style_html_str(args.custom_style, html_str)
+
+    if not args.no_style and not args.custom_style:
+        html_str = default_style_html_str(html_str)
     pb(75)
     try:
         publish_html = save_str_as_file(html_str, out_path)
