@@ -15,13 +15,15 @@ def clipps_str_to_html_str(clipps_str):
     # SEARCH AND REPLACE
     html_str = re.sub(r"\n\n", "\n", html_str)  # Removes empty lines
     html_str = re.sub(r"==========", "<div class=\"entry\">\n<h2>", html_str)   # Replaces Kindle entryies markup with the "entry" class and opens headers 2
-    html_str = re.sub(r"- .* \| ", "###timestamp### ", html_str)   # Removes redundant information from timestamps
+    html_str = re.sub(r"- .* \| ", "###timestamp### ", html_str)   # Removes redundant information from timestamps and adds a tag that is used to optimize RE in the next lines
     for added_on in re.findall(r"^###timestamp### .*", html_str, re.MULTILINE):    # Shortens and wraps timestamps || MAKE THIS GENERIC FOR OTHER LANGUAGES
-        added_on_new = re.sub(r"Added on .*, ", "", added_on, re.MULTILINE)
-        added_on_new = re.sub(r":\d\d$", "", added_on_new, re.MULTILINE)
-        added_on_new = f"<div class=\"timestamp\">{added_on_new}</div>\n<blockquote>"
+        added_on_new = re.sub(r"###timestamp###", "", added_on) # Removes the ###timestamp### tag
+        added_on_new = re.sub(r":\d\d$", "", added_on_new, re.MULTILINE)    # [Optional] Removes seconds in 24h timestamps
+        added_on_new = re.sub(r":\d\d PM$", " PM", added_on_new, re.MULTILINE)    # [Optional] Removes seconds in 12h PM timestamps
+        added_on_new = re.sub(r":\d\d AM$", " AM", added_on_new, re.MULTILINE)    # [Optional] Removes seconds in 12h AM timestamps
+        added_on_new = re.sub(r"^ Added on ", "", added_on_new)    # [Optional] Removes the "Added on" timestamp text
+        added_on_new = f"<div class=\"timestamp\">{added_on_new}</div>\n<blockquote>"   # Wraps timestamps in timestamp divs and opens a blockquote
         html_str = re.sub(added_on, added_on_new, html_str)
-    html_str = re.sub(r"###timestamp### ", "", html_str)
     html_str = re.sub(r"<div class=\"timestamp\">", "</h2>\n<div class=\"timestamp\">", html_str)   # Closes headers 2 before timestamps
     html_str = re.sub(r"<div class=\"entry\">\n<h2>\n<div class=\"footer\">", "</blockquote>\n</div>\n<div class=\"footer\">", html_str)    # Removes redundant entry divs and headers 2 before the footer
     html_str = re.sub("<div class=\"entry\">\n<h2>", "</blockquote>\n</div>\n<div class=\"entry\">\n<h2>", html_str)    # Closes blockquote and entry div before opening anothe entry div
