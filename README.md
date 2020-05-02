@@ -18,7 +18,7 @@
 4. If a prompt appears, enter the clippings file path manually.
 5. If needed, accept every security prompt. See:
    * [Accepting macOS Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-Security-Prompts)
-   * [Accepting Windows Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-Windows-Security-Prompts)
+   * [Accepting Windows Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-Windows-Security-Prompts)  
 **Result:** Klipps exports the Kindle clippings file to a HTML file and saves the HTML file on your desktop.
 1. Close the **Klipps** window.
 
