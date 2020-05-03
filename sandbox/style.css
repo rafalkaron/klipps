@@ -1,47 +1,67 @@
-body{
-    width:90%; 
+*{
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 100%;
-    background-color: #F2E9E4; 
-    margin:auto; 
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0px;
 }
 
-.entry{
-    border: 2px solid #22223B;
-    border-radius: 10px;
-    margin: 2px; 
+.frontpage{
+    background-color: #1D3557;
+    height: 100vh;
 }
 
 h1{
-    font-size:7rem;
-    font-weight:lighter;
+    font-size: 15vh;
     text-align: center;
-    margin-top: 0.2em;
-    margin-bottom: 0.4em;
-    margin: 1em, 0em, 1em, 0em;
-    color: #22223B;
+    padding-top: 15vh;
+    padding-bottom: 30vh;
+    color: #F1FAEE;
+}
+
+.generator{
+    font-size: 3.5vh;
+    text-align: center;
+    color: #F1FAEE;
+}
+
+.entry{
+    font-size: 1.5rem;
+    padding: 2rem;
+}
+
+.entry:nth-child(odd){
+    background: #F1FAEE;
+}
+
+.entry:nth-child(even){
+    background: #A8DADC;
 }
 
 h2{
-    color: #4A4E69
+    font-size: 2.5rem;
+    color: #1D3557;
 }
 
 .timestamp{
-    color: #9A8C98;
+    color: #1D3557;
 }
 
 blockquote{
-    background-color: #C9ADA7; padding: 1em; margin: 0em;
-    border-radius: 0px 0px 10px 10px;
     text-align: justify;
+    color: #1D3557;
 }
 
 footer{
-    display: block;
-    clear: both;
+    padding: 2.5rem;
+    background-color: #1D3557;
+    color: #F1FAEE;
+
 }
 
 a{
+    color: #F1FAEE;
     font-weight: bold;
     text-decoration: none;
 }
+/*
+
+*/
