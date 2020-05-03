@@ -48,6 +48,7 @@ def default_style_html_str(html_str):
     font-family: Helvetica, Arial, sans-serif;
     font-size: 100%;
     margin: 0px;
+    
 }
 
 .frontpage{
@@ -60,7 +61,7 @@ h1{
     text-align: center;
     padding-top: 15vh;
     padding-bottom: 30vh;
-    color: #F1FAEE;
+    color: #F1FAEE;    
 }
 
 .generator{
@@ -70,8 +71,7 @@ h1{
 }
 
 .entry{
-    font-size: 1.5rem;
-    padding: 2rem;
+    padding: 4rem 10rem 4rem 10rem;
 }
 
 .entry:nth-child(odd){
@@ -79,33 +79,39 @@ h1{
 }
 
 .entry:nth-child(even){
-    background: #A8DADC;
+    background: rgb(228, 235, 226);
 }
 
 h2{
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     color: #1D3557;
 }
 
 .timestamp{
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
     color: #1D3557;
 }
 
 blockquote{
+    font-size: 1.5rem;
     text-align: justify;
     color: #1D3557;
 }
 
 footer{
-    padding: 2.5rem;
+    font-size: 1.5rem;
+    padding: 2rem 1rem 2rem 1rem;
     background-color: #1D3557;
     color: #F1FAEE;
+    text-align: center;
 
 }
 
 a{
-    color: #F1FAEE;
-    font-weight: bold;
+    color: #E63946;
+    font-weight: bolder;
     text-decoration: none;
 }
 
