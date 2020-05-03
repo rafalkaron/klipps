@@ -57,15 +57,17 @@ def default_style_html_str(html_str):
 }
 
 h1{
-    font-size: 15vh;
+    font-size: 10vw;
     text-align: center;
     padding-top: 15vh;
     padding-bottom: 30vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
     color: #F1FAEE;    
 }
 
 .generator{
-    font-size: 3.5vh;
+    font-size: 3.5vw;
     text-align: center;
     color: #F1FAEE;
 }
