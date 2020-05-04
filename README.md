@@ -25,12 +25,12 @@
 **Result:** Klipps opens in a **Terminal** window and tries to automatically detect the clippings file on the connected Kindle device.
 4. If a prompt appears, enter the clippings file path manually.
 5. If needed, accept every security prompt.  
-For more information, see any of the following:  
-[Accepting macOS App Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-App-Security-Prompts)  
-[Accepting macOS Script Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-Script-Security-Prompts)  
-[Accepting Windows Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-Windows-Security-Prompts)  
+For more information, see one of the following:  
+  [Accepting macOS App Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-App-Security-Prompts)  
+  [Accepting macOS Script Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-Script-Security-Prompts)  
+  [Accepting Windows Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-Windows-Security-Prompts)  
 **Result:** Klipps exports the Kindle clippings file to an HTML file and saves the HTML file on your desktop.  
-6. Close the **Klipps** window.
+1. Close the **Klipps** window.
 
 ### Next Steps
 * Safely eject your Kindle device from your computer.

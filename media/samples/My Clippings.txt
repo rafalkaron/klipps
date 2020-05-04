@@ -1,4 +1,4 @@
-﻿AI Superpowers (Kai-Fu Lee)
+sAI Superpowers (Kai-Fu Lee)
 - Your Highlight at location 1811-1816 | Added on Monday, 17 February 2020 21:50:58
 
 The horsepower of these AI engines depends on the digital data they have access to, and there’s currently no greater storehouse of this data than the major internet companies. But that data only becomes truly useful to algorithms once it has been labeled. In this case, “labeled” doesn’t mean you have to actively rate the content or tag it with a keyword. Labels simply come from linking a piece of data with a specific outcome: bought versus didn’t buy, clicked versus didn’t click, watched until the end versus switched videos. Those labels—our purchases, likes, views, or lingering moments on a web page—are then used to train algorithms to recommend more content that we’re likely to consume.
