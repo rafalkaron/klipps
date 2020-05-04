@@ -18,7 +18,7 @@ from Klipps import (get_clipps_filepath,
                     open_file,
                     exit_prompt)
 
-__version__ = "0.9.2"
+__version__ = "0.9.3"
 __author__ = "Rafał Karoń <rafalkaron@gmail.com.com>"
 
 def main():
@@ -45,10 +45,8 @@ def main():
     start_time = time.time()
     html_str = clipps_str_to_html_str(read_file(in_path))
     pb(50)
-
     if args.custom_style:
         html_str = custom_style_html_str(args.custom_style, html_str)
-
     if not args.no_style and not args.custom_style:
         html_str = default_style_html_str(html_str)
     pb(75)
