@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="klipps3.svg"
-   inkscape:export-filename="C:\Users\rafal\Desktop\klipps.png"
+   inkscape:export-filename="C:\Users\rafal\Desktop\klipps3.png"
    inkscape:export-xdpi="72.000008"
    inkscape:export-ydpi="72.000008">
   <title
@@ -31,15 +31,15 @@
      inkscape:pageopacity="0.20784314"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35355339"
-     inkscape:cx="-270.70393"
-     inkscape:cy="554.94607"
+     inkscape:cx="671.72624"
+     inkscape:cy="351.05892"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="3742"
-     inkscape:window-height="2131"
-     inkscape:window-x="2489"
-     inkscape:window-y="-9"
+     inkscape:window-width="1842"
+     inkscape:window-height="1057"
+     inkscape:window-x="70"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      units="px"
      inkscape:showpageshadow="false"
@@ -158,12 +158,12 @@
      id="layer1"
      transform="translate(0,-32.416632)">
     <path
-       style="fill:#00ccff;stroke-width:1.32083833;fill-opacity:1"
+       style="fill:#e63946;stroke-width:1.32083833;fill-opacity:1"
        d="M 431.36914 100 L 100 431.36914 L 568.63086 900 L 568.63086 568.63086 L 900 568.63086 L 431.36914 100 z "
        transform="matrix(0.26458335,0,0,0.26458335,0,32.416632)"
        id="rect3770" />
     <path
-       style="fill:#000000;fill-opacity:1;stroke-width:1.32083833"
+       style="fill:#1d3557;fill-opacity:1;stroke-width:1.32083833"
        d="M 500 500 L 500 831.36914 L 568.63086 900 L 568.63086 568.63086 L 900 568.63086 L 831.36914 500 L 500 500 z "
        transform="matrix(0.26458335,0,0,0.26458335,0,32.416632)"
        id="rect3770-4" />

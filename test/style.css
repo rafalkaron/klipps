@@ -2,7 +2,6 @@
     font-family: Helvetica, Arial, sans-serif;
     font-size: 100%;
     margin: 0px;
-    
 }
 
 .frontpage{
@@ -14,20 +13,20 @@ h1{
     font-size: 10vw;
     text-align: center;
     padding-top: 15vh;
-    padding-bottom: 30vh;
-    padding-left: 5vh;
-    padding-right: 5vh;
+    padding-bottom: 20vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
     color: #F1FAEE;    
 }
 
 .generator{
-    font-size: 3.5vw;
+    font-size: 3vw;
     text-align: center;
     color: #F1FAEE;
 }
 
 .entry{
-    padding: 4rem 10rem 4rem 10rem;
+    padding: 4rem 8vw 4rem 8vw;
 }
 
 .entry:nth-child(odd){
