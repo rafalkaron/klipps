@@ -2,12 +2,14 @@
 *Klipps enables you to export your Kindle clippings to an HTML file.*
 
 #### Original Kindle Clippings
-![Original Kindle Clippings](https://link)
-[My Clippings.txt](https://link)
+![Original Kindle Clippings](https://github.com/rafalkaron/Klipps/blob/master/media/samples/clippings_txt.png)  
+[My Clippings.txt](https://github.com/rafalkaron/Klipps/blob/master/media/samples/My%20Clippings.txt)
 
 #### Exported Kindle Clippings
-![Exported Kindle Clippings](https://link)
-[My Clippings.html](https://link)
+![Exported Kindle Clippings](https://github.com/rafalkaron/Klipps/blob/master/media/samples/converted1.png)  
+![Exported Kindle Clippings](https://github.com/rafalkaron/Klipps/blob/master/media/samples/converted2.png)
+![Exported Kindle Clippings](https://github.com/rafalkaron/Klipps/blob/master/media/samples/converted3.png)  
+[My Clippings.html](https://github.com/rafalkaron/Klipps/blob/master/media/samples/My%20Clippings.html)
 
 ## Exporting Kindle Clippings with Klipps
 *You export your Kindle clippings by connecting your Kindle device to a computer and running Klipps.*  
