@@ -7,8 +7,6 @@
 
 #### Exported Kindle Clippings
 ![Exported Kindle Clippings](https://github.com/rafalkaron/Klipps/blob/master/media/samples/converted1.png)  
-![Exported Kindle Clippings](https://github.com/rafalkaron/Klipps/blob/master/media/samples/converted2.png)
-![Exported Kindle Clippings](https://github.com/rafalkaron/Klipps/blob/master/media/samples/converted3.png)  
 [My Clippings.html](https://github.com/rafalkaron/Klipps/blob/master/media/samples/My%20Clippings.html)
 
 ## Exporting Kindle Clippings with Klipps
