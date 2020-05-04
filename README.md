@@ -12,12 +12,12 @@
 
 ### Procedure
 1. Download the latest **Klipps** version for your operating system. See [Klipps Releases](https://github.com/rafalkaron/Klipps/releases).
-2. If needed, unzip **Klipps**.
-3. Double-click the downloaded **Klipps** application.  
+2. Unzip **Klipps**.
+3. Double-click the downloaded **Klipps** executable.  
 **Result:** Klipps opens in a **Terminal** window and tries to automatically detect the clippings file on the connected Kindle device.
 4. If a prompt appears, enter the clippings file path manually.
-5. If needed, accept every security prompt. See [Accepting macOS Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-Security-Prompts) or [Accepting Windows Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-Windows-Security-Prompts).  
-**Result:** Klipps exports the Kindle clippings file to a HTML file and saves the HTML file on your desktop.
+5. If needed, accept every security prompt. See [Accepting macOS App Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-App-Security-Prompts), [Accepting macOS Script Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-macOS-Script-Security-Prompts), or [Accepting Windows Security Prompts](https://github.com/rafalkaron/Klipps/wiki/Accepting-Windows-Security-Prompts).  
+**Result:** Klipps exports the Kindle clippings file to an HTML file and saves the HTML file on your desktop.
 1. Close the **Klipps** window.
 
 ### Next Steps
