@@ -15,7 +15,7 @@
 
 ### Before you begin
   * Ensure that you highlighted some quotes while reading on your Kindle.
-  * Ensure that your Kindle is connected to and discovered by your computer.  
+  * Ensure that your Kindle is connected to your computer with a cable.  
     **Important:** Some third-party USB cables may prevent your computer from correctly discovering your Kindle.
 
 ### Procedure
