@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="1000"
+   viewBox="0 0 264.58335 264.58335"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="klipps3.svg"
+   inkscape:export-filename="C:\Users\rafal\Desktop\klipps3.png"
+   inkscape:export-xdpi="72.000008"
+   inkscape:export-ydpi="72.000008">
+  <title
+     id="title3713">Klipps</title>
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#515151"
+     bordercolor="#000000"
+     borderopacity="1"
+     inkscape:pageopacity="0.20784314"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="671.72624"
+     inkscape:cy="351.05892"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1842"
+     inkscape:window-height="1057"
+     inkscape:window-x="70"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     units="px"
+     inkscape:showpageshadow="false"
+     showborder="true"
+     inkscape:pagecheckerboard="false"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="132.29167,132.29167"
+       orientation="0,1"
+       id="guide3724"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="132.29167,132.29167"
+       orientation="1,0"
+       id="guide3726"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="79.375005,79.375005"
+       orientation="-0.70710678,0.70710678"
+       id="guide3748"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="132.29167,132.29167"
+       orientation="0.70710678,0.70710678"
+       id="guide3750"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="26.458327,150.45027"
+       orientation="-0.70710678,0.70710678"
+       id="guide3776"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="150.45027,26.458323"
+       orientation="-0.70710678,0.70710678"
+       id="guide3778"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="114.13307,238.12501"
+       orientation="0.70710678,0.70710678"
+       id="guide3780"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="26.458335,150.45028"
+       orientation="0.70710678,0.70710678"
+       id="guide3782"
+       inkscape:locked="false"
+       inkscape:label=""
+       inkscape:color="rgb(0,0,255)" />
+    <sodipodi:guide
+       position="150.45028,26.458334"
+       orientation="1,0"
+       id="guide3801"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="238.12501,114.13307"
+       orientation="0,1"
+       id="guide3803"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="132.29167,114.13307"
+       orientation="-0.70710678,0.70710678"
+       id="guide3806"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="26.458336,150.45028"
+       orientation="0,1"
+       id="guide3826"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Klipps</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Rafał Karoń</dc:title>
+          </cc:Agent>
+        </dc:creator>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Background" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Filling">
+    <circle
+       style="fill:#ffffff;stroke-width:0.22826612"
+       id="path3736-9"
+       cx="132.29167"
+       cy="132.29169"
+       r="114.13306" />
+  </g>
+  <g
+     inkscape:label="Icon"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-32.416632)">
+    <path
+       style="fill:#e63946;stroke-width:1.32083833;fill-opacity:1"
+       d="M 431.36914 100 L 100 431.36914 L 568.63086 900 L 568.63086 568.63086 L 900 568.63086 L 431.36914 100 z "
+       transform="matrix(0.26458335,0,0,0.26458335,0,32.416632)"
+       id="rect3770" />
+    <path
+       style="fill:#1d3557;fill-opacity:1;stroke-width:1.32083833"
+       d="M 500 500 L 500 831.36914 L 568.63086 900 L 568.63086 568.63086 L 900 568.63086 L 831.36914 500 L 500 500 z "
+       transform="matrix(0.26458335,0,0,0.26458335,0,32.416632)"
+       id="rect3770-4" />
+  </g>
+</svg>
